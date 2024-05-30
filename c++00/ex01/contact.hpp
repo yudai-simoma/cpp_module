@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:50:52 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/19 23:17:25 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:36:51 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class Contact {
 	public:
 		Contact();
 		~Contact();
+		void setId(int id);
+		int getId();
 		void setFirstName(std::string firstName);
 		std::string getFirstName();
 		void setLastName(std::string lastName);
@@ -31,7 +33,7 @@ class Contact {
 		void setDarkestSecret(std::string drakestSecret);
 		std::string getDarkestSecret();
 	private:
-		//TODO: int _idを追加する。8件を超えてもいい。
+		int _id;
 		std::string _firstName;
 		std::string _lastName;
 		std::string _nickname;

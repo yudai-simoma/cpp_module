@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:29:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/19 23:16:54 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/31 04:04:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define __PHONE_BOOK__
 
 #include "contact.hpp"
+#include <sstream>
+#include <iomanip>
 
 #define MAX_CONTACT_SIZE 8
 
@@ -25,12 +27,12 @@ class PhoneBook {
 		void search();
 		void exit();
 	private:
-		void putContact(int id, Contact contact);
+		void putContact(Contact& contact);
 		int numberEntry();
-		void putContactDetail(Contact contact);
-		void getValidatedInput(std::string& input, const std::string msg);
+		void putContactDetail(Contact& contact);
+		void getValidatedInput(std::string& input, const std::string& msg);
 
-		int _id;//TODO: いらない
+		int _max_id;
 		Contact _contacts[MAX_CONTACT_SIZE];
 };
 

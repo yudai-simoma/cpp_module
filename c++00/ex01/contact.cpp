@@ -6,18 +6,26 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:19:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/19 23:11:52 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:12:11 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.hpp"
 
-Contact::Contact() : _firstName(""), _lastName(""), _nickname(""),_phoneNumber(""), _darkestSecret("") {
-	std::cout << "Contactオブジェクト生成" << std::endl;
+Contact::Contact() : _id(0), _firstName(""), _lastName(""), _nickname(""),_phoneNumber(""), _darkestSecret("") {
+	std::clog << "Contactオブジェクト生成" << std::endl;
 }
 
 Contact::~Contact() {
-	std::cout << "Contactオブジェクト破壊" << std::endl;
+	std::clog << "Contactオブジェクト破壊" << std::endl;
+}
+
+void Contact::setId(int id) {
+	_id = id;
+}
+
+int Contact::getId() {
+	return _id;
 }
 
 void Contact::setFirstName(std::string firstName) {
