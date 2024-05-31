@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:52:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/31 23:26:40 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/01 00:08:45 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void PhoneBook::add() {
 
     _max_id++;
     _contacts[id].setId(_max_id);
-    getValidatedInput(input, "Please enter First Name\t: ");
+    _getValidatedInput(input, "Please enter First Name\t\t: ");
     _contacts[id].setFirstName(input);
-    getValidatedInput(input, "Please enter LastName\t: ");
+    _getValidatedInput(input, "Please enter LastName\t\t: ");
     _contacts[id].setLastName(input);
-    getValidatedInput(input, "Please enter Nickname\t: ");
+    _getValidatedInput(input, "Please enter Nickname\t\t: ");
     _contacts[id].setNickname(input);
-    getValidatedInput(input, "Please enter PhoneNumber\t: ");
+    _getValidatedInput(input, "Please enter PhoneNumber\t: ");
     _contacts[id].setPhoneNumber(input);
-    getValidatedInput(input, "Please enter DarkestSecret\t: ");
+    _getValidatedInput(input, "Please enter DarkestSecret\t: ");
     _contacts[id].setDarkestSecret(input);
 }
 
@@ -54,13 +54,13 @@ void PhoneBook::search() {
     std::cout << std::setw(10) << std::right << "Nickname"
               << "|" << std::endl;
     for (int i = 0; i < MAX_CONTACT_SIZE; i++) {
-        putContact(_contacts[i]);
+        _putContact(_contacts[i]);
     }
     int id = 0;
     while (true) {
-        id = numberEntry();
+        id = _numberEntry();
         if (id > 0 && id <= _max_id) {
-            putContactDetail(_contacts[id - 1]);
+            _putContactDetail(_contacts[id - 1]);
             break;
         } else {
             std::cout << "Please enter a valid value." << std::endl;
@@ -73,22 +73,20 @@ void PhoneBook::exit() {
     return;
 }
 
-/** 以下からprivate関数 */
-
-void PhoneBook::putContact(Contact& contact) {
+void PhoneBook::_putContact(Contact& contact) {
     std::stringstream ss;
     std::string str;
 
     ss << contact.getId();
     ss >> str;
-    std::cout << std::setw(10) << std::right << truncateString(str) << "|";
-    std::cout << std::setw(10) << std::right << truncateString(contact.getFirstName()) << "|";
-    std::cout << std::setw(10) << std::right << truncateString(contact.getLastName()) << "|";
-    std::cout << std::setw(10) << std::right << truncateString(contact.getNickname()) << "|"
+    std::cout << std::setw(10) << std::right << _truncateString(str) << "|";
+    std::cout << std::setw(10) << std::right << _truncateString(contact.getFirstName()) << "|";
+    std::cout << std::setw(10) << std::right << _truncateString(contact.getLastName()) << "|";
+    std::cout << std::setw(10) << std::right << _truncateString(contact.getNickname()) << "|"
               << std::endl;
 }
 
-int PhoneBook::numberEntry() {
+int PhoneBook::_numberEntry() {
     int id = 0;
     std::stringstream ss;
     std::string str;
@@ -104,7 +102,7 @@ int PhoneBook::numberEntry() {
     return id;
 }
 
-void PhoneBook::putContactDetail(Contact& contact) {
+void PhoneBook::_putContactDetail(Contact& contact) {
     std::cout << "ID\t\t: " << contact.getId() << std::endl;
     std::cout << "FirstName\t: " << contact.getFirstName() << std::endl;
     std::cout << "LastName\t: " << contact.getLastName() << std::endl;
@@ -113,7 +111,7 @@ void PhoneBook::putContactDetail(Contact& contact) {
     std::cout << "DarkestSecret\t: " << contact.getDarkestSecret() << std::endl;
 }
 
-void PhoneBook::getValidatedInput(std::string& input, const std::string& msg) {
+void PhoneBook::_getValidatedInput(std::string& input, const std::string& msg) {
     while (true) {
         input = "";
         std::cout << msg;
@@ -126,7 +124,7 @@ void PhoneBook::getValidatedInput(std::string& input, const std::string& msg) {
     }
 }
 
-std::string PhoneBook::truncateString(const std::string& str) {
+std::string PhoneBook::_truncateString(const std::string& str) {
     size_t size = str.length();
 
     if (size < 10) {
