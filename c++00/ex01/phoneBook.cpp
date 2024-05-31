@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:52:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/01 00:08:45 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/01 01:57:31 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,25 @@ PhoneBook::~PhoneBook() {
 /* 連絡先を追加する */
 void PhoneBook::add() {
     std::string input;
-    int id = _max_id % MAX_CONTACT_SIZE;
+    int id = this->_max_id % MAX_CONTACT_SIZE;
 
-    _max_id++;
-    _contacts[id].setId(_max_id);
-    _getValidatedInput(input, "Please enter First Name\t\t: ");
-    _contacts[id].setFirstName(input);
-    _getValidatedInput(input, "Please enter LastName\t\t: ");
-    _contacts[id].setLastName(input);
-    _getValidatedInput(input, "Please enter Nickname\t\t: ");
-    _contacts[id].setNickname(input);
-    _getValidatedInput(input, "Please enter PhoneNumber\t: ");
-    _contacts[id].setPhoneNumber(input);
-    _getValidatedInput(input, "Please enter DarkestSecret\t: ");
-    _contacts[id].setDarkestSecret(input);
+    this->_max_id++;
+    this->_contacts[id].setId(this->_max_id);
+    this->_getValidatedInput(input, "Please enter First Name\t\t: ");
+    this->_contacts[id].setFirstName(input);
+    this->_getValidatedInput(input, "Please enter LastName\t\t: ");
+    this->_contacts[id].setLastName(input);
+    this->_getValidatedInput(input, "Please enter Nickname\t\t: ");
+    this->_contacts[id].setNickname(input);
+    this->_getValidatedInput(input, "Please enter PhoneNumber\t: ");
+    this->_contacts[id].setPhoneNumber(input);
+    this->_getValidatedInput(input, "Please enter DarkestSecret\t: ");
+    this->_contacts[id].setDarkestSecret(input);
 }
 
 /* 連絡先を表示し、検索させる */
 void PhoneBook::search() {
-    if (_max_id == 0) {
+    if (this->_max_id == 0) {
         std::cout << "There are no registered contacts." << std::endl;
         return;
     }
@@ -54,13 +54,13 @@ void PhoneBook::search() {
     std::cout << std::setw(10) << std::right << "Nickname"
               << "|" << std::endl;
     for (int i = 0; i < MAX_CONTACT_SIZE; i++) {
-        _putContact(_contacts[i]);
+        this->_putContact(this->_contacts[i]);
     }
     int id = 0;
     while (true) {
-        id = _numberEntry();
-        if (id > 0 && id <= _max_id) {
-            _putContactDetail(_contacts[id - 1]);
+        id = this->_numberEntry();
+        if (id > 0 && id <= this->_max_id) {
+            this->_putContactDetail(this->_contacts[id - 1]);
             break;
         } else {
             std::cout << "Please enter a valid value." << std::endl;

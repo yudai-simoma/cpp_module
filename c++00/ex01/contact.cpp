@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:19:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/31 23:21:40 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/01 01:57:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,49 +22,49 @@ Contact::~Contact() {
 }
 
 void Contact::setId(int id) {
-    _id = id;
+    this->_id = id;
 }
 
 int Contact::getId() {
-    return _id;
+    return this->_id;
 }
 
 void Contact::setFirstName(std::string firstName) {
-    _firstName = firstName;
+    this->_firstName = firstName;
 }
 
 std::string Contact::getFirstName() {
-    return _firstName;
+    return this->_firstName;
 }
 
 void Contact::setLastName(std::string lastName) {
-    _lastName = lastName;
+    this->_lastName = lastName;
 }
 
 std::string Contact::getLastName() {
-    return _lastName;
+    return this->_lastName;
 }
 
 void Contact::setNickname(std::string nickname) {
-    _nickname = nickname;
+    this->_nickname = nickname;
 }
 
 std::string Contact::getNickname() {
-    return _nickname;
+    return this->_nickname;
 }
 
 void Contact::setPhoneNumber(std::string phoneNumber) {
-    _phoneNumber = phoneNumber;
+    this->_phoneNumber = phoneNumber;
 }
 
 std::string Contact::getPhoneNumber() {
-    return _phoneNumber;
+    return this->_phoneNumber;
 }
 
 void Contact::setDarkestSecret(std::string drakestSecret) {
-    _darkestSecret = drakestSecret;
+    this->_darkestSecret = drakestSecret;
 }
 
 std::string Contact::getDarkestSecret() {
-    return _darkestSecret;
+    return this->_darkestSecret;
 }
