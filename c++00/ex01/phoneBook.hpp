@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:29:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/31 04:04:46 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:41:44 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ class PhoneBook {
 		int numberEntry();
 		void putContactDetail(Contact& contact);
 		void getValidatedInput(std::string& input, const std::string& msg);
-
+		std::string truncateString(const std::string& str);
+		
 		int _max_id;
 		Contact _contacts[MAX_CONTACT_SIZE];
 };

@@ -1,8 +1,7 @@
 NAME			=	phoneBook
 
 CXX				=	c++
-CXXFLAGS			=	-Wall -Wextra -Werror -std=c++98
-# CXXFLAGS			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CXXFLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
 
 SRC_DIR			=	./src
 OBJ_DIR			=	./obj
@@ -39,6 +38,9 @@ re		:	fclean all
 
 format	:
 	${FORMAT} -i ${SRCS}
+
+debug: CXXFLAGS += -g -fsanitize=address,undefined                                 
+debug: re
 
 -include ${DEPS}
 
