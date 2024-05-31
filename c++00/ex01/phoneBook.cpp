@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:52:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/31 18:10:15 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/31 23:17:13 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,12 @@ void PhoneBook::exit() {
 /** 以下からprivate関数 */
 
 void PhoneBook::putContact(Contact& contact) {
-    std::cout << std::setw(10) << std::right << truncateString(std::to_string(contact.getId()))
-              << "|";
+    std::stringstream ss;
+    std::string str;
+
+    ss << contact.getId();
+    ss >> str;
+    std::cout << std::setw(10) << std::right << truncateString(str) << "|";
     std::cout << std::setw(10) << std::right << truncateString(contact.getFirstName()) << "|";
     std::cout << std::setw(10) << std::right << truncateString(contact.getLastName()) << "|";
     std::cout << std::setw(10) << std::right << truncateString(contact.getNickname()) << "|"
