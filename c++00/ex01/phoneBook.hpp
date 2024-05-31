@@ -16,6 +16,7 @@
 #include "contact.hpp"
 #include <sstream>
 #include <iomanip>
+#include <cstdlib>
 
 #define MAX_CONTACT_SIZE 8
 

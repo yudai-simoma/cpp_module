@@ -48,7 +48,6 @@ std::string commandEntry() {
         std::exit(EXIT_SUCCESS);
     } else {
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Invalid input. Please choose from ADD, SEARCH, EXIT." << std::endl;
         return "";
     }
