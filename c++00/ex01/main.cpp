@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 20:46:29 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/31 18:14:25 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/31 23:28:28 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main() {
             phoneBook.exit();
             break;
         } else {
-            std::cout << "入力が不正です。" << std::endl << std::endl;
+            std::cout << "Invalid input." << std::endl << std::endl;
         }
     }
     return 0;
@@ -40,16 +40,16 @@ std::string commandEntry() {
 
     std::cout << "-----" << std::endl;
     std::cout << "ADD, SEARCH, EXIT" << std::endl;
-    std::cout << "上記から実行したいコマンドを入力してください: ";
+    std::cout << "Please enter the command you want to execute: ";
     if (std::getline(std::cin, str)) {
         return str;
     } else if (std::cin.eof()) {
-        std::cout << "EOFが入力されたためプログラムを終了します。" << std::endl;
+        std::cout << "EOF detected. Exiting the program." << std::endl;
         std::exit(EXIT_SUCCESS);
     } else {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "入力が不正です。ADD, SEARCH, EXITから選んでください。" << std::endl;
+        std::cout << "Invalid input. Please choose from ADD, SEARCH, EXIT." << std::endl;
         return "";
     }
 }

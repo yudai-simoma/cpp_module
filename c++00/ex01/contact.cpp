@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:19:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/30 12:12:11 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/31 23:21:40 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 Contact::Contact()
     : _id(0), _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""), _darkestSecret("") {
-    std::clog << "Contactオブジェクト生成" << std::endl;
+    std::clog << "Contact object created" << std::endl;
 }
 
 Contact::~Contact() {
-    std::clog << "Contactオブジェクト破壊" << std::endl;
+    std::clog << "Contact object destroyed" << std::endl;
 }
 
 void Contact::setId(int id) {

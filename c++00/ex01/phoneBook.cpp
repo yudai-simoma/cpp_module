@@ -6,18 +6,18 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:52:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/05/31 23:17:13 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/05/31 23:26:40 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phoneBook.hpp"
 
 PhoneBook::PhoneBook() : _max_id(0) {
-    std::clog << "PhoneBookオブジェクト生成" << std::endl;
+    std::clog << "PhoneBook object created" << std::endl;
 }
 
 PhoneBook::~PhoneBook() {
-    std::clog << "PhoneBookオブジェクト破壊" << std::endl;
+    std::clog << "PhoneBook object destroyed" << std::endl;
 }
 
 /* 連絡先を追加する */
@@ -27,22 +27,22 @@ void PhoneBook::add() {
 
     _max_id++;
     _contacts[id].setId(_max_id);
-    getValidatedInput(input, "FirstNameを入力してください\t: ");
+    getValidatedInput(input, "Please enter First Name\t: ");
     _contacts[id].setFirstName(input);
-    getValidatedInput(input, "LastNameを入力してください\t: ");
+    getValidatedInput(input, "Please enter LastName\t: ");
     _contacts[id].setLastName(input);
-    getValidatedInput(input, "Nicknameを入力してください\t: ");
+    getValidatedInput(input, "Please enter Nickname\t: ");
     _contacts[id].setNickname(input);
-    getValidatedInput(input, "PhoneNumberを入力してください\t: ");
+    getValidatedInput(input, "Please enter PhoneNumber\t: ");
     _contacts[id].setPhoneNumber(input);
-    getValidatedInput(input, "DarkestSecretを入力してください\t: ");
+    getValidatedInput(input, "Please enter DarkestSecret\t: ");
     _contacts[id].setDarkestSecret(input);
 }
 
 /* 連絡先を表示し、検索させる */
 void PhoneBook::search() {
     if (_max_id == 0) {
-        std::cout << "登録されている連絡先は0件です。" << std::endl;
+        std::cout << "There are no registered contacts." << std::endl;
         return;
     }
     std::cout << std::setw(10) << std::right << "ID"
@@ -63,7 +63,7 @@ void PhoneBook::search() {
             putContactDetail(_contacts[id - 1]);
             break;
         } else {
-            std::cout << "正しい値を入力してください。" << std::endl;
+            std::cout << "Please enter a valid value." << std::endl;
         }
     }
 }
@@ -93,10 +93,10 @@ int PhoneBook::numberEntry() {
     std::stringstream ss;
     std::string str;
 
-    std::cout << "表示する連絡先の番号を入力してください: ";
+    std::cout << "Please enter the number of the contact to display: ";
     std::getline(std::cin, str);
     if (std::cin.eof()) {
-        std::cout << "EOFが入力されたためプログラムを終了します。" << std::endl;
+        std::cout << "EOF detected. Exiting the program." << std::endl;
         std::exit(EXIT_SUCCESS);
     }
     ss << str;
@@ -121,7 +121,7 @@ void PhoneBook::getValidatedInput(std::string& input, const std::string& msg) {
         if (!input.empty() && input.size() != 0) {
             return;
         } else {
-            std::cout << "1文字以上入力してください。" << std::endl;
+            std::cout << "Please enter at least one character." << std::endl;
         }
     }
 }
