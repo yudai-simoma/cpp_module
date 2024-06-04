@@ -13,16 +13,19 @@
 #include "Account.hpp"
 #include <iostream>
 
-Account::Account(int initial_deposit): _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0){
-    std::clog << "Account object created" << std::endl;
+Account::Account(int initial_deposit): _accountIndex(this._nbAccounts), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0){
+	this._nbAccounts++;
+	this._displayTimestamp();
+    std::clog << "index:" << _accounIndex << ";amount:" << _amount << ";created" << std::endl;
 }
 
-Account::Account(void) {
+Account::Account(void): _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0){
     std::clog << "Account object created" << std::endl;
 }
 
 Account::~Account() {
-    std::clog << "Account object destroyed" << std::endl;
+	_displayTimestamp();
+	std::clog << "index:" << _accounIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
 
 int Account::getNbAccounts(void) {
@@ -49,7 +52,13 @@ int	Account::getNbWithdrawals(void) {
 	の情報を表示する
 */
 void	Account::displayAccountsInfos(void) {
-
+	_displayTimestamp();
+	std::cout
+	<< "accounts:" << this._nbAccounts
+	<< ";total:" << this._totalAmount
+	<< ";deposits:" << _totalNbDeposits
+	<< ";withdrawals:" << this._totalNbWithdrawals
+	<< std::endl;
 }
 
 // 入金
@@ -77,5 +86,14 @@ void	Account::displayStatus( void ) const {
 
 // 現在日時を表示する
 void	_displayTimestamp(void) {
+	std::time_t t = std::time(nullptr);
+	std::tm* now = std::localtime(&t);
 
+	char buffer[128];
+	strftime(buffer, sizeof(buffer), "%Y%m%d_%X", now);
+
+	std::string dateTimeStr(buffer);
+	// ':' を削除する
+	dateTimeStr.erase(std::remove(dateTimeStr.begin(), dateTimeStr.end(), ':'), dateTimeStr.end());
+	std::cout << "[" << dateTimeStr << "] ";
 }
