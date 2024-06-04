@@ -1,6 +1,3 @@
-*.log
-tests.cpp
-Account.hpp
 /test/
 .vscode/
 *.o
