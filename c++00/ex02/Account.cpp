@@ -17,16 +17,16 @@ Account::Account(int initial_deposit): _accountIndex(this._nbAccounts), _amount(
 	this._nbAccounts++;
 	_totalAmount += initial_deposit;
 	this._displayTimestamp();
-    std::out << "index:" << this._accounIndex << ";amount:" << this._amount << ";created" << std::endl;
+    std::cout << "index:" << this._accounIndex << ";amount:" << this._amount << ";created" << std::endl;
 }
 
 Account::Account(void): _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0){
-    std::out << "Account object created" << std::endl;
+    std::cout << "Account object created" << std::endl;
 }
 
 Account::~Account() {
 	_displayTimestamp();
-	std::out << "index:" << this._accounIndex << ";amount:" << this._amount << ";closed" << std::endl;
+	std::cout << "index:" << this._accounIndex << ";amount:" << this._amount << ";closed" << std::endl;
 }
 
 int Account::getNbAccounts(void) {

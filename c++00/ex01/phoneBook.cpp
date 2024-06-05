@@ -13,11 +13,11 @@
 #include "phoneBook.hpp"
 
 PhoneBook::PhoneBook() : _max_id(0) {
-    std::clog << "PhoneBook object created" << std::endl;
+    std::cout << "PhoneBook object created" << std::endl;
 }
 
 PhoneBook::~PhoneBook() {
-    std::clog << "PhoneBook object destroyed" << std::endl;
+    std::ccout << "PhoneBook object destroyed" << std::endl;
 }
 
 /* 連絡先を追加する */

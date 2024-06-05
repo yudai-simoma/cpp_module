@@ -14,11 +14,11 @@
 
 Contact::Contact()
     : _id(0), _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""), _darkestSecret("") {
-    std::clog << "Contact object created" << std::endl;
+    std::cout << "Contact object created" << std::endl;
 }
 
 Contact::~Contact() {
-    std::clog << "Contact object destroyed" << std::endl;
+    std::cout << "Contact object destroyed" << std::endl;
 }
 
 void Contact::setId(int id) {
