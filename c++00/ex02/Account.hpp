@@ -40,16 +40,25 @@ public:
 
 private:
 
+	//総アカウント数
 	static int	_nbAccounts;
+	//総合計金額
 	static int	_totalAmount;
+	//総預金残高
 	static int	_totalNbDeposits;
+	//総出金額
 	static int	_totalNbWithdrawals;
 
+	//現在日時を表示
 	static void	_displayTimestamp( void );
 
+	//アカウント番号
 	int				_accountIndex;
+	//金額
 	int				_amount;
+	//貯金額
 	int				_nbDeposits;
+	//出金額
 	int				_nbWithdrawals;
 
 	Account( void );
