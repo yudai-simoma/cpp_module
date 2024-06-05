@@ -1,4 +1,4 @@
-NAME			=	phoneBook
+NAME			=	account
 
 CXX				=	c++
 CXXFLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
@@ -8,9 +8,8 @@ OBJ_DIR			=	./obj
 INCLUDE			=	-Iinclude
 
 # find . -type f -name "*.cpp" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/' | pbcopy
-SRCS			=	./contact.cpp \
-					./phoneBook.cpp \
-					./main.cpp \
+SRCS			=	./Account.cpp \
+					./tests.cpp \
 
 OBJS			=	${addprefix ${OBJ_DIR}/, ${SRCS:.cpp=.o}}
 DEPS			=	${OBJS:.o=.d}
