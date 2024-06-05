@@ -12,7 +12,10 @@
 
 #include "Account.hpp"
 
+#include <algorithm>
+#include <ctime>
 #include <iostream>
+#include <string>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -123,7 +126,7 @@ void Account::displayStatus(void) const {
 
 // 現在日時を表示する
 void Account::_displayTimestamp(void) {
-    std::time_t t = std::time(nullptr);
+    std::time_t t = std::time(NULL);
     std::tm* now = std::localtime(&t);
 
     char buffer[128];
