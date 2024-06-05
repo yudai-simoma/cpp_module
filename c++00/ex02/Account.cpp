@@ -24,7 +24,7 @@ Account::Account(void): _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdra
     std::cout << "Account object created" << std::endl;
 }
 
-Account::~Account() {
+Account::~Account(void) {
 	_displayTimestamp();
 	std::cout << "index:" << this._accounIndex << ";amount:" << this._amount << ";closed" << std::endl;
 }
