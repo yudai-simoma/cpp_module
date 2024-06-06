@@ -40,7 +40,10 @@ format	:
 	${FORMAT} -i ${SRCS}
 
 debug: CXXFLAGS += -g -fsanitize=address,undefined                                 
-debug: re
+debug: re run
+
+run: all
+	./$(NAME)
 
 -include ${DEPS}
 
