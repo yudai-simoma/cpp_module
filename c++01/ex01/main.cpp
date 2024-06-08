@@ -4,16 +4,16 @@
 int main() {
     try {
         int N = 5;
-        Zombie *zombie = zombieHorde(N, "Zombie");
-        if (zombie == NULL) {
+        Zombie *zombies = zombieHorde(N, "Zombie");
+        if (zombies == NULL) {
             return (1);
         }
 
         for (int i = 0; i < N; i++) {
-            zombie[i].announce();
+            zombies[i].announce();
         }
 
-        delete[] zombie;
+        delete[] zombies;
         return 0;
     } catch(const std::bad_alloc& e) {
         return 1;
