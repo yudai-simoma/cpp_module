@@ -1,4 +1,4 @@
-NAME			=	HiThisIsBrain
+NAME			=	violence
 
 CXX				=	c++
 CXXFLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
@@ -8,7 +8,10 @@ OBJ_DIR			=	./obj
 INCLUDE			=	-Iinclude
 
 # find . -type f -name "*.cpp" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/' | pbcopy
-SRCS			=	./main.cpp \
+SRCS			=	./HumanA.cpp \
+					./HumanB.cpp \
+					./Weapon.cpp \
+					./main.cpp \
 
 OBJS			=	${addprefix ${OBJ_DIR}/, ${SRCS:.cpp=.o}}
 DEPS			=	${OBJS:.o=.d}

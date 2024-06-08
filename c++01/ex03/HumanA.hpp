@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/08 23:35:56 by yshimoma          #+#    #+#             */
+/*   Updated: 2024/06/08 23:35:56 by yshimoma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef __HUMANA_HPP__
 #define __HUMANA_HPP__
@@ -8,7 +20,6 @@
 
 class HumanA {
 public:
-    HumanA();
     HumanA(std::string name, Weapon& weapon);
     ~HumanA();
     void attack();
