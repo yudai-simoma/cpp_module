@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:52:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/09 15:55:44 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/09 17:24:58 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ void PhoneBook::search() {
         this->_putContact(this->_contacts[i]);
     }
     int id = 0;
+    int contactIndex = -1;
     while (true) {
         id = this->_numberEntry();
-        if (id > 0 && id <= this->_max_id) {
-            this->_putContactDetail(this->_contacts[id - 1]);
+        contactIndex = this->_findContactIndex(this->_contacts, id);
+        if (contactIndex != -1) {
+            this->_putContactDetail(this->_contacts[contactIndex]);
             break;
         } else {
             std::cout << "Please enter a valid value." << std::endl;
@@ -116,7 +118,10 @@ void PhoneBook::_getValidatedInput(std::string& input, const std::string& msg) {
         input = "";
         std::cout << msg;
         std::getline(std::cin, input);
-        if (!input.empty() && input.size() != 0) {
+        if (std::cin.eof()) {
+            std::cout << "EOF detected. Exiting the program." << std::endl;
+            std::exit(EXIT_SUCCESS);
+        } else if (!input.empty() && input.size() != 0) {
             return;
         } else {
             std::cout << "Please enter at least one character." << std::endl;
@@ -133,4 +138,13 @@ std::string PhoneBook::_truncateString(const std::string& str) {
         std::string ret = str.substr(0, 9);
         return ret + ".";
     }
+}
+
+int PhoneBook::_findContactIndex(Contact contacts[MAX_CONTACT_SIZE], int id) {
+    for (int i = 0; i < MAX_CONTACT_SIZE; i++) {
+        if(contacts[i].getId() == id) {
+            return i;
+        }
+    }
+    return -1;
 }
