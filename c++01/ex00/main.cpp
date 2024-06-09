@@ -13,11 +13,15 @@
 #include "Zombie.hpp"
 
 int main() {
-    Zombie *zombie = newZombie("Zombie1");
-    zombie->announce();
+    try {
+        Zombie* zombie = newZombie("Zombie1");
+        zombie->announce();
 
-    randomChump("Zombie2");
+        randomChump("Zombie2");
 
-    delete zombie;
-    return 0;
+        delete zombie;
+        return 0;
+    } catch (const std::bad_alloc& e) {
+        return 1;
+    }
 }
