@@ -6,7 +6,7 @@ Zombie* zombieHorde(int N, std::string name) {
         return NULL;
     }
 
-    Zombie *zombies = new Zombie[N];
+    Zombie* zombies = new Zombie[N];
     for (int i = 0; i < N; i++) {
         zombies[i] = Zombie(name);
     }

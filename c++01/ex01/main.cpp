@@ -4,7 +4,7 @@
 int main() {
     try {
         int N = 5;
-        Zombie *zombies = zombieHorde(N, "Zombie");
+        Zombie* zombies = zombieHorde(N, "Zombie");
         if (zombies == NULL) {
             return (1);
         }
@@ -15,7 +15,7 @@ int main() {
 
         delete[] zombies;
         return 0;
-    } catch(const std::bad_alloc& e) {
+    } catch (const std::bad_alloc& e) {
         return 1;
     }
 }
