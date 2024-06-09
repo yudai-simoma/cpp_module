@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:52:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/01 01:57:31 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:55:44 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ PhoneBook::PhoneBook() : _max_id(0) {
 }
 
 PhoneBook::~PhoneBook() {
-    std::ccout << "PhoneBook object destroyed" << std::endl;
+    std::cout << "PhoneBook object destroyed" << std::endl;
 }
 
 /* 連絡先を追加する */
