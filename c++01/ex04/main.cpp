@@ -6,44 +6,53 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 00:48:12 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/10 01:07:08 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:32:31 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fstream>
 #include <iostream>
 #include <string>
 
-/*
-以下は、指定された問題の日本語訳です：
-
-プログラムを作成し、3つのパラメータを以下の順序で受け取るようにしてください：
-ファイル名、および2つの文字列 s1 と s2。
-
-このプログラムは、指定されたファイル <filename> を開き、
-その内容を新しいファイル <filename>.replace にコピーし、
-s1 のすべての出現を s2 に置き換えます。
-
-C言語のファイル操作関数を使用することは禁止されており、
-使用した場合は不正行為と見なされます。
-ただし、std::string クラスのすべてのメンバ関数は使用可能ですが、
-replace は使用できません。これらの関数を賢く活用してください。
-
-もちろん、予期しない入力やエラーを適切に処理する必要があります。
-プログラムが期待通りに動作することを確認するために、
-自分自身でテストを作成して提出してください。
- */
+#include "StringUtils.hpp"
 
 int main(int argc, char **argv) {
-	//引数チェック
-	std::string fileName = argv[1];
-	std::string s1 = argv[2];
-	std::string s2 = argv[3];
+    if (argc != 4) {
+        std::cout << "Invalid parameters." << std::endl;
+        return 1;
+    }
 
-	//ファイルを開いて中身を取得
+    try {
+        std::string fileName = argv[1];
+        std::ifstream readFile;
+        std::string line;
+        std::string contents = "";
+        std::ofstream writeFali;
 
-	//ファイルの中のs1をs2に変換
+        // ファイルを開いて中身を取得
+        readFile.open(fileName, std::ios::in);
+        if (!readFile) {
+            std::cout << "Failed to open file: " << fileName << std::endl;
+            return 1;
+        }
+        while (std::getline(readFile, line)) {
+            contents += line + '\n';
+        }
+        // ファイルの中のs1をs2に変換
+        contents = StringUtils::replaceContents(contents, argv[2], argv[3]);
+        // ファイルを開いて、書き込み
+        writeFali.open(fileName + ".replace");
+        if (!writeFali) {
+            std::cout << "Failed to open file: " << fileName << ".replace" << std::endl;
+            return 1;
+        }
+        writeFali << contents;
 
-	//ファイルを開いて、書き込み
-
-
+        readFile.close();
+        writeFali.close();
+        return 0;
+    } catch (...) {
+        std::cout << "An error occurred." << std::endl;
+        return 1;
+    }
 }
