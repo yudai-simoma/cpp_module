@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
         std::ofstream writeFali;
 
         // ファイルを開いて中身を取得
-        readFile.open(fileName, std::ios::in);
+        readFile.open(fileName.c_str(), std::ios::in);
         if (!readFile) {
             std::cout << "Failed to open file: " << fileName << std::endl;
             return 1;
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
         // ファイルの中のs1をs2に変換
         contents = StringUtils::replaceContents(contents, argv[2], argv[3]);
         // ファイルを開いて、書き込み
-        writeFali.open(fileName + ".replace");
+        writeFali.open((fileName + ".replace").c_str());
         if (!writeFali) {
             std::cout << "Failed to open file: " << fileName << ".replace"
                       << std::endl;
