@@ -43,7 +43,8 @@ int main(int argc, char **argv) {
         // ファイルを開いて、書き込み
         writeFali.open(fileName + ".replace");
         if (!writeFali) {
-            std::cout << "Failed to open file: " << fileName << ".replace" << std::endl;
+            std::cout << "Failed to open file: " << fileName << ".replace"
+                      << std::endl;
             return 1;
         }
         writeFali << contents;

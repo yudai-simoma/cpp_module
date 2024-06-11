@@ -12,7 +12,8 @@
 
 #include "StringUtils.hpp"
 
-std::string StringUtils::replaceAtPosition(const std::string& contents, size_t pos, size_t len,
+std::string StringUtils::replaceAtPosition(const std::string& contents,
+                                           size_t pos, size_t len,
                                            const std::string& str) {
     std::string replaceContents;
 
@@ -22,7 +23,8 @@ std::string StringUtils::replaceAtPosition(const std::string& contents, size_t p
     return replaceContents;
 }
 
-std::string StringUtils::replaceContents(const std::string& contents, const std::string& s1,
+std::string StringUtils::replaceContents(const std::string& contents,
+                                         const std::string& s1,
                                          const std::string& s2) {
     std::string replaceContents = contents;
     size_t index = 0;
@@ -33,7 +35,8 @@ std::string StringUtils::replaceContents(const std::string& contents, const std:
         if (index == std::string::npos) {
             break;
         }
-        replaceContents = replaceAtPosition(replaceContents, index, s2.length(), s1);
+        replaceContents =
+            replaceAtPosition(replaceContents, index, s2.length(), s1);
         serch_num = index + s1.length();
     }
     return replaceContents;

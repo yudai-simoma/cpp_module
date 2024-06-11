@@ -36,7 +36,7 @@ fclean	:	clean
 re		:	fclean all
 
 format	:
-	${FORMAT} -i ${SRCS}
+	${FORMAT} -i ${SRCS} ${SRCS:.cpp=.hpp}
 
 debug: CXXFLAGS += -g -fsanitize=address,undefined                                 
 debug: re run
