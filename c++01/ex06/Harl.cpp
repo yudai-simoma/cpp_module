@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:17:34 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/12 00:36:28 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/12 00:59:08 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,24 @@ Harl::~Harl() {
               << std::endl;
 }
 
-void Harl::complain(std::string leval) {
+void Harl::complain(std::string level) {
     std::string str[] = {Harl::DEBUG, Harl::INFO, Harl::WARNING, Harl::ERROR};
     size_t i;
     for (i = 0; i < LEVEL_NUM; i++) {
-        if (str[i] == leval) {
+        if (str[i] == level) {
             break;
         }
     }
     if (i != LEVEL_NUM) {
-        for (; i < LEVEL_NUM; i++) {
-            switch (i) {
-            case DEBUG_NUM:
-                debug();
-                break;
-            case INFO_NUM:
-                info();
-                break;
-            case WARNING_NUM:
-                warning();
-                break;
-            case ERROR_NUM:
-                error();
-                break;
-            }
+        switch (i) {
+        case DEBUG_NUM:
+            debug();
+        case INFO_NUM:
+            info();
+        case WARNING_NUM:
+            warning();
+        case ERROR_NUM:
+            error();
         }
     } else {
         std::cout << "[ Probably complaining about insignificant problems ]"

@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:17:34 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/12 00:36:41 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/12 00:59:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ Harl::~Harl() {
               << std::endl;
 }
 
-void Harl::complain(std::string leval) {
+void Harl::complain(std::string level) {
     std::string str[] = {Harl::DEBUG, Harl::INFO, Harl::WARNING, Harl::ERROR};
     size_t i;
     for (i = 0; i < LEVEL_NUM; i++) {
-        if (str[i] == leval) {
+        if (str[i] == level) {
             break;
         }
     }
