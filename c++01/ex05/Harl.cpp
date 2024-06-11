@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:17:34 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/12 00:10:07 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/12 00:36:41 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void Harl::complain(std::string leval) {
             break;
         }
     }
-    if (i != 4) {
+    if (i != LEVEL_NUM) {
         void (Harl::*funcPtr)() = _funcArray[i];
         (this->*funcPtr)();
     } else {
