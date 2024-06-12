@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:44:35 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/11 15:32:32 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/13 00:36:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ std::string StringUtils::replaceContents(const std::string& contents,
     size_t serch_num = 0;
 
     while (true) {
-        index = replaceContents.find(s2, serch_num);
+        index = replaceContents.find(s1, serch_num);
         if (index == std::string::npos) {
             break;
         }
         replaceContents =
-            replaceAtPosition(replaceContents, index, s2.length(), s1);
-        serch_num = index + s1.length();
+            replaceAtPosition(replaceContents, index, s1.length(), s2);
+        serch_num = index + s2.length();
     }
     return replaceContents;
 }

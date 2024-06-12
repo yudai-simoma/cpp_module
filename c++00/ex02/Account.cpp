@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 23:34:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/05 23:27:57 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/13 00:10:03 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void Account::makeDeposit(int deposit) {
 
 // 出金
 bool Account::makeWithdrawal(int withdrawal) {
-    // TODO: リターンせずに規定のログを出力する
     if (this->_amount < withdrawal) {
         this->_displayTimestamp();
         std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount

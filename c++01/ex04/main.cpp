@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 00:48:12 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/11 15:32:31 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/13 00:37:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "StringUtils.hpp"
 
 int main(int argc, char **argv) {
-    if (argc != 4) {
+    if (argc != 4 || strlen(argv[2]) == 0) {
         std::cout << "Invalid parameters." << std::endl;
         return 1;
     }
