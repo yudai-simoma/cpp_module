@@ -9,6 +9,7 @@ class Zombie {
     public:
         Zombie();
         Zombie(std::string name);
+        Zombie& operator=(const Zombie& other);
         ~Zombie();
         void announce(void);
     private:
