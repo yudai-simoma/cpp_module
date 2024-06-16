@@ -15,6 +15,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <climits>
 
 class Fixed {
    public:
