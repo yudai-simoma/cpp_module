@@ -13,9 +13,9 @@
 #ifndef __FIXED_HPP__
 #define __FIXED_HPP__
 
+#include <climits>
 #include <cmath>
 #include <iostream>
-#include <climits>
 
 class Fixed {
    public:

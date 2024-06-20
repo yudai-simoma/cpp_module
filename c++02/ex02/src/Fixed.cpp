@@ -143,7 +143,8 @@ Fixed Fixed::operator*(const Fixed &other) const {
                     throw std::overflow_error("Overflow during multiplication");
                 }
             } else {
-                if (this->_rawBits != 0 && other.getRawBits() < INT_MAX / this->_rawBits) {
+                if (this->_rawBits != 0 &&
+                    other.getRawBits() < INT_MAX / this->_rawBits) {
                     throw std::overflow_error("Overflow during multiplication");
                 }
             }
