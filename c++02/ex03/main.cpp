@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 02:28:09 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/20 21:15:42 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/21 01:00:54 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 bool bsp(Point const a, Point const b, Point const c, Point const point);
 
-// TODO: std::coutの処理を削除
 int main(void) {
     try {
         // テストケース 1: 点が三角形の内部にある場合（true）

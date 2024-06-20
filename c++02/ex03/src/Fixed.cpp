@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 02:29:01 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/20 20:51:40 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/21 01:53:32 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,28 +129,33 @@ Fixed Fixed::operator*(const Fixed &other) const {
     if (other.getRawBits() != 0) {
         if (this->_rawBits > 0) {
             if (other.getRawBits() > 0) {
-                if (this->_rawBits > INT_MAX / other.getRawBits()) {
+                if (this->_rawBits >
+                    (INT_MAX / other.getRawBits()) * _scalingFactor) {
                     throw std::overflow_error("Overflow during multiplication");
                 }
             } else {
-                if (other.getRawBits() < INT_MIN / this->_rawBits) {
+                if (other.getRawBits() <
+                    (INT_MIN / this->_rawBits) * _scalingFactor) {
                     throw std::overflow_error("Overflow during multiplication");
                 }
             }
         } else {
             if (other.getRawBits() > 0) {
-                if (this->_rawBits < INT_MIN / other.getRawBits()) {
+                if (this->_rawBits <
+                    (INT_MIN / other.getRawBits()) * _scalingFactor) {
                     throw std::overflow_error("Overflow during multiplication");
                 }
             } else {
                 if (this->_rawBits != 0 &&
-                    other.getRawBits() < INT_MAX / this->_rawBits) {
+                    other.getRawBits() <
+                        (INT_MAX / this->_rawBits) * _scalingFactor) {
                     throw std::overflow_error("Overflow during multiplication");
                 }
             }
         }
     }
-    obj.setRawBits((this->_rawBits * other.getRawBits()) / _scalingFactor);
+    obj.setRawBits((this->_rawBits / (_scalingFactor / 16)) *
+                   (other.getRawBits() / (_scalingFactor / 16)));
     return obj;
 }
 
