@@ -9,7 +9,9 @@ INCLUDE			=	-Iinclude
 
 # find . -type f -name "*.cpp" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/' | pbcopy
 SRCS			=	./main.cpp \
+					./src/bsp.cpp \
 					./src/Fixed.cpp \
+					./src/Point.cpp \
 
 OBJS			=	${addprefix ${OBJ_DIR}/, ${SRCS:.cpp=.o}}
 DEPS			=	${OBJS:.o=.d}
