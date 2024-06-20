@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 02:29:01 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/16 23:02:07 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/20 21:19:26 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,28 @@ Fixed Fixed::operator-(const Fixed &other) const {
 
 Fixed Fixed::operator*(const Fixed &other) const {
     Fixed obj;
-    if (other.getRawBits() != 0 &&
-        this->_rawBits > INT_MAX / other.getRawBits()) {
-        throw std::overflow_error("Overflow during multiplication");
+    if (other.getRawBits() != 0) {
+        if (this->_rawBits > 0) {
+            if (other.getRawBits() > 0) {
+                if (this->_rawBits > INT_MAX / other.getRawBits()) {
+                    throw std::overflow_error("Overflow during multiplication");
+                }
+            } else {
+                if (other.getRawBits() < INT_MIN / this->_rawBits) {
+                    throw std::overflow_error("Overflow during multiplication");
+                }
+            }
+        } else {
+            if (other.getRawBits() > 0) {
+                if (this->_rawBits < INT_MIN / other.getRawBits()) {
+                    throw std::overflow_error("Overflow during multiplication");
+                }
+            } else {
+                if (this->_rawBits != 0 && other.getRawBits() < INT_MAX / this->_rawBits) {
+                    throw std::overflow_error("Overflow during multiplication");
+                }
+            }
+        }
     }
     obj.setRawBits((this->_rawBits * other.getRawBits()) / _scalingFactor);
     return obj;
