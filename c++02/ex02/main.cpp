@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 02:28:09 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/16 22:38:34 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/21 00:43:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include "Fixed.hpp"
 
 int main(void) {
+    // オーバーフローチェック
+    // Fixed x(512);
+    // Fixed y(512);
+    // std::cout << "x * y: " << (x * y) << std::endl;
     // コンストラクタテスト
     Fixed a;
     Fixed b(10);
