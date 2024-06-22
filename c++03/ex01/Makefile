@@ -1,7 +1,7 @@
 NAME			=	a.out
 
 CXX				=	c++
-CXXFLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
+CXXFLAGS		=	-Wall -Wextra -Werror -pedantic -Wshadow -std=c++98
 
 SRC_DIR			=	./src
 OBJ_DIR			=	./obj
