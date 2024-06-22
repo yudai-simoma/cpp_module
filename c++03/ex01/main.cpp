@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 19:04:57 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 19:53:08 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/23 02:37:25 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main() {
     std::cout << "Scav3: " << scav3 << std::endl;
 
     ScavTrap scav4("Scavvy2");
-    ClapTrap& clapPtr = scav1;
+    ClapTrap& clapPtr = scav4;
     clapPtr.attack("Target1");
 
     return 0;

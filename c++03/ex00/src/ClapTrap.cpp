@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:06:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 20:05:48 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/23 03:25:40 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const std::string name)
     : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << RED_START << this->_name << "is created" << COLOR_END
+    std::cout << RED_START << this->_name << " is created" << COLOR_END
               << std::endl;
 }
 
@@ -34,15 +34,15 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
-    std::cout << RED_START << this->_name
-              << " is Copy assignment operator called" << COLOR_END
-              << std::endl;
     if (this != &other) {
         this->_name = other.getName();
         this->_hitPoints = other.getHitPoints();
         this->_energyPoints = other.getEnergyPoints();
         this->_attackDamage = other.getAttackDamage();
     }
+    std::cout << RED_START << this->_name
+              << " is Copy assignment operator called" << COLOR_END
+              << std::endl;
     return *this;
 }
 
@@ -86,10 +86,10 @@ void ClapTrap::beRepaired(unsigned int amount) {
 }
 
 std::ostream& operator<<(std::ostream& os, const ClapTrap& clapTrap) {
-    os << "name: " << clapTrap.getName() << " hitPoints; "
-       << clapTrap.getHitPoints()
-       << " energyPoints: " << clapTrap.getEnergyPoints()
-       << " attackDamage: " << clapTrap.getAttackDamage();
+    os << "name: " << clapTrap.getName()
+       << ", hitPoints: " << clapTrap.getHitPoints()
+       << ", energyPoints: " << clapTrap.getEnergyPoints()
+       << ", attackDamage: " << clapTrap.getAttackDamage();
     return os;
 }
 

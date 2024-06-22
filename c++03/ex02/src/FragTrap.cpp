@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 20:20:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/23 01:59:37 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/23 02:30:04 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 FragTrap::FragTrap() : ClapTrap() {
     this->setName("");
     this->setHitPoints(100);
-    this->setEnergyPoints(50);
-    this->setAttackDamage(20);
+    this->setEnergyPoints(100);
+    this->setAttackDamage(30);
     std::cout << RED_START << "FragTrap object created" << COLOR_END
               << std::endl;
 }
 
 FragTrap::FragTrap(const std::string name) : ClapTrap(name) {
     this->setHitPoints(100);
-    this->setEnergyPoints(50);
-    this->setAttackDamage(20);
+    this->setEnergyPoints(100);
+    this->setAttackDamage(30);
     std::cout << RED_START << "FragTrap " << name << " is created" << COLOR_END
               << std::endl;
 }
@@ -36,12 +36,12 @@ FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& other) {
-    std::cout << RED_START << "FragTrap " << this->getName()
-              << " is Copy assignment operator called" << COLOR_END
-              << std::endl;
     if (this != &other) {
         ClapTrap::operator=(other);
     }
+    std::cout << RED_START << "FragTrap " << this->getName()
+              << " is Copy assignment operator called" << COLOR_END
+              << std::endl;
     return *this;
 }
 
