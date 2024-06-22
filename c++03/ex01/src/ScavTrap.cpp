@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:46:19 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 20:07:51 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/23 02:01:37 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
               << " is Copy assignment operator called" << COLOR_END
               << std::endl;
     if (this != &other) {
-        this->setName(other.getName());
-        this->setHitPoints(other.getHitPoints());
-        this->setEnergyPoints(other.getEnergyPoints());
-        this->setAttackDamage(other.getAttackDamage());
+        ClapTrap::operator=(other);
     }
     return *this;
 }
