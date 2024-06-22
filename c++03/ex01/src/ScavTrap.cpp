@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:46:19 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 19:14:37 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/22 20:07:51 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,28 @@ ScavTrap::ScavTrap() : ClapTrap() {
     this->setHitPoints(100);
     this->setEnergyPoints(50);
     this->setAttackDamage(20);
-    std::cout << "ScavTrap object created" << std::endl;
+    std::cout << RED_START << "ScavTrap object created" << COLOR_END
+              << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name) {
     this->setHitPoints(100);
     this->setEnergyPoints(50);
     this->setAttackDamage(20);
-    std::cout << "ScavTrap " << name << " is created" << std::endl;
+    std::cout << RED_START << "ScavTrap " << name << " is created" << COLOR_END
+              << std::endl;
 }
 
 // 暗黙的にClapTrapへキャストされる
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
-    std::cout << "ScavTrap " << this->getName()
-              << " is Copy constructor created" << std::endl;
+    std::cout << RED_START << "ScavTrap " << this->getName()
+              << " is Copy constructor created" << COLOR_END << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
-    std::cout << "ScavTrap " << this->getName()
-              << " is Copy assignment operator called" << std::endl;
+    std::cout << RED_START << "ScavTrap " << this->getName()
+              << " is Copy assignment operator called" << COLOR_END
+              << std::endl;
     if (this != &other) {
         this->setName(other.getName());
         this->setHitPoints(other.getHitPoints());
@@ -47,7 +50,8 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
 
 // 継承しているため、ClapTrapのデストラクターも自動で走る。
 ScavTrap::~ScavTrap() {
-    std::cout << "ScavTrap " << this->getName() << " is destroyed" << std::endl;
+    std::cout << RED_START << "ScavTrap " << this->getName() << " is destroyed"
+              << COLOR_END << std::endl;
 }
 
 void ScavTrap::attack(const std::string& target) {

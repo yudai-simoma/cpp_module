@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:06:50 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 01:17:18 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/22 20:04:56 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include <iostream>
 #include <string>
+
+// 赤色の開始
+#define RED_START "\033[1;31m"
+// 色のリセット
+#define COLOR_END "\033[0m"
 
 class ClapTrap {
    public:

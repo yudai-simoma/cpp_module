@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:06:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 19:08:15 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/22 20:05:59 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 ClapTrap::ClapTrap()
     : _name(""), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << "ClapTrap object created" << std::endl;
+    std::cout << RED_START << "ClapTrap object created" << COLOR_END
+              << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string name)
     : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << "ClapTrap " << this->_name << " is created" << std::endl;
+    std::cout << RED_START << "ClapTrap " << this->_name << " is created"
+              << COLOR_END << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -27,13 +29,14 @@ ClapTrap::ClapTrap(const ClapTrap& other)
       _hitPoints(other.getHitPoints()),
       _energyPoints(other.getEnergyPoints()),
       _attackDamage(other.getAttackDamage()) {
-    std::cout << "ClapTrap " << this->_name << " is Copy constructor created"
-              << std::endl;
+    std::cout << RED_START << "ClapTrap " << this->_name
+              << " is Copy constructor created" << COLOR_END << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
-    std::cout << "ClapTrap " << this->_name
-              << " is Copy assignment operator called" << std::endl;
+    std::cout << RED_START << "ClapTrap " << this->_name
+              << " is Copy assignment operator called" << COLOR_END
+              << std::endl;
     if (this != &other) {
         this->_name = other.getName();
         this->_hitPoints = other.getHitPoints();
@@ -44,7 +47,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "ClapTrap " << this->_name << " is destroyed" << std::endl;
+    std::cout << RED_START << "ClapTrap " << this->_name << " is destroyed"
+              << COLOR_END << std::endl;
 }
 
 /**
