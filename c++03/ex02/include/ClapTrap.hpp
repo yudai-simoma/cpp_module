@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:06:50 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 20:05:11 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:33:34 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <climits>
 
 // 赤色の開始
 #define RED_START "\033[1;31m"
@@ -44,9 +45,9 @@ class ClapTrap {
 
    private:
     std::string _name;
-    int _hitPoints;
-    int _energyPoints;
-    int _attackDamage;
+    unsigned int _hitPoints;
+    unsigned int _energyPoints;
+    unsigned int _attackDamage;
 };
 
 std::ostream& operator<<(std::ostream& os, const ClapTrap& clapTrap);

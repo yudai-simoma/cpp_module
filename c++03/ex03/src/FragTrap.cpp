@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 20:20:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/23 02:29:49 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:18:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 FragTrap::FragTrap() : ClapTrap() {
     this->setName("");
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    this->setHitPoints(FragTrap::FRAGTRAP_DEFAULT_HIT_POINTS);
+    this->setEnergyPoints(FragTrap::FRAGTRAP_DEFAULT_ENERGY_POINTS);
+    this->setAttackDamage(FragTrap::FRAGTRAP_DEFAULT_ATTACK_DAMAGE);
     std::cout << RED_START << "FragTrap object created" << COLOR_END
               << std::endl;
 }
 
 FragTrap::FragTrap(const std::string name) : ClapTrap(name) {
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    this->setHitPoints(FragTrap::FRAGTRAP_DEFAULT_HIT_POINTS);
+    this->setEnergyPoints(FragTrap::FRAGTRAP_DEFAULT_ENERGY_POINTS);
+    this->setAttackDamage(FragTrap::FRAGTRAP_DEFAULT_ATTACK_DAMAGE);
     std::cout << RED_START << "FragTrap " << name << " is created" << COLOR_END
               << std::endl;
 }

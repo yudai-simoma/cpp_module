@@ -6,16 +6,16 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 21:53:37 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/23 03:36:05 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:19:37 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap(), _name("") {
-    this->setHitPoints(FragTrap::getHitPoints());
-    this->setEnergyPoints(ScavTrap::getEnergyPoints());
-    this->setAttackDamage(FragTrap::getAttackDamage());
+    this->setHitPoints(FragTrap::FRAGTRAP_DEFAULT_HIT_POINTS);
+    this->setEnergyPoints(ScavTrap::SCAVTRAP_DEFAULT_ENERGY_POINTS);
+    this->setAttackDamage(FragTrap::FRAGTRAP_DEFAULT_ATTACK_DAMAGE);
     std::cout << RED_START << "DiamondTrap object created" << COLOR_END
               << std::endl;
 }
@@ -25,9 +25,9 @@ DiamondTrap::DiamondTrap(const std::string name)
       ScavTrap(name + "_clap_name"),
       FragTrap(name + "_clap_name"),
       _name(name) {
-    this->setHitPoints(FragTrap::getHitPoints());
-    this->setEnergyPoints(ScavTrap::getEnergyPoints());
-    this->setAttackDamage(FragTrap::getAttackDamage());
+    this->setHitPoints(FragTrap::FRAGTRAP_DEFAULT_HIT_POINTS);
+    this->setEnergyPoints(ScavTrap::SCAVTRAP_DEFAULT_ENERGY_POINTS);
+    this->setAttackDamage(FragTrap::FRAGTRAP_DEFAULT_ATTACK_DAMAGE);
     std::cout << RED_START << "DiamondTrap " << name << " is created"
               << COLOR_END << std::endl;
 }

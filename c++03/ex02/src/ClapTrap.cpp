@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:06:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/23 03:25:05 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:33:48 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,32 @@ void ClapTrap::attack(const std::string& target) {
 void ClapTrap::takeDamage(unsigned int amount) {
     std::cout << "ClapTrap " << this->_name << " takes " << amount
               << " points of damage! Ouch!" << std::endl;
-    this->_hitPoints -= amount;
+
+    if (amount > this->_hitPoints) {
+        this->_hitPoints = 0;
+    } else {
+        this->_hitPoints -= amount;
+    }
 }
 
 /**
  * この関数は、ClapTrapのヒットポイントをamount分回復します。
  */
 void ClapTrap::beRepaired(unsigned int amount) {
-    std::cout << "ClapTrap " << this->_name << " repaired itself for " << amount
-              << " hit points! Feeling better!" << std::endl;
-    this->_hitPoints += amount;
+    if (this->_energyPoints > 0) {
+        std::cout << "ClapTrap " << this->_name << " repaired itself for " << amount
+                  << " hit points! Feeling better!" << std::endl;
+        --this->_energyPoints;
+
+        if (this->_hitPoints + amount < this->_hitPoints) {
+           this->_hitPoints = UINT_MAX;
+        } else {
+           this->_hitPoints += amount;
+        }
+    } else {
+        std::cout << "ClapTrap " << this->_name
+                  << " is out of energy and cannot beRepaired!" << std::endl;
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const ClapTrap& clapTrap) {

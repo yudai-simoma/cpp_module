@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:34:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 19:14:07 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:15:22 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ class ScavTrap : public ClapTrap {
 
     void attack(const std::string& target);
     void guardGate();
+   
+   protected:
+    static const unsigned int SCAVTRAP_DEFAULT_HIT_POINTS = 100;
+    static const unsigned int SCAVTRAP_DEFAULT_ENERGY_POINTS = 50;
+    static const unsigned int SCAVTRAP_DEFAULT_ATTACK_DAMAGE = 20;
 
    private:
 };

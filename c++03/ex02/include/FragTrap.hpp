@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 20:20:32 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/22 20:33:48 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:18:04 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ class FragTrap : public ClapTrap {
 
     void attack(const std::string& target);
     void highFivesGuys();
+   
+   protected:
+    static const unsigned int FRAGTRAP_DEFAULT_HIT_POINTS = 100;
+    static const unsigned int FRAGTRAP_DEFAULT_ENERGY_POINTS = 100;
+    static const unsigned int FRAGTRAP_DEFAULT_ATTACK_DAMAGE = 30;
 
    private:
 };

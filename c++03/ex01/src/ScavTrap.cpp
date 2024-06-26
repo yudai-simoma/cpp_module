@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:46:19 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/23 02:30:19 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:15:07 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 ScavTrap::ScavTrap() : ClapTrap() {
     this->setName("");
-    this->setHitPoints(100);
-    this->setEnergyPoints(50);
-    this->setAttackDamage(20);
+    this->setHitPoints(ScavTrap::SCAVTRAP_DEFAULT_HIT_POINTS);
+    this->setEnergyPoints(ScavTrap::SCAVTRAP_DEFAULT_ENERGY_POINTS);
+    this->setAttackDamage(ScavTrap::SCAVTRAP_DEFAULT_ATTACK_DAMAGE);
     std::cout << RED_START << "ScavTrap object created" << COLOR_END
               << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name) {
-    this->setHitPoints(100);
-    this->setEnergyPoints(50);
-    this->setAttackDamage(20);
+    this->setHitPoints(ScavTrap::SCAVTRAP_DEFAULT_HIT_POINTS);
+    this->setEnergyPoints(ScavTrap::SCAVTRAP_DEFAULT_ENERGY_POINTS);
+    this->setAttackDamage(ScavTrap::SCAVTRAP_DEFAULT_ATTACK_DAMAGE);
     std::cout << RED_START << "ScavTrap " << name << " is created" << COLOR_END
               << std::endl;
 }
