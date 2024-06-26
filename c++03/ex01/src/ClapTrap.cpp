@@ -86,14 +86,14 @@ void ClapTrap::takeDamage(unsigned int amount) {
  */
 void ClapTrap::beRepaired(unsigned int amount) {
     if (this->_energyPoints > 0) {
-        std::cout << "ClapTrap " << this->_name << " repaired itself for " << amount
-                  << " hit points! Feeling better!" << std::endl;
+        std::cout << "ClapTrap " << this->_name << " repaired itself for "
+                  << amount << " hit points! Feeling better!" << std::endl;
         --this->_energyPoints;
 
         if (this->_hitPoints + amount < this->_hitPoints) {
-           this->_hitPoints = UINT_MAX;
+            this->_hitPoints = UINT_MAX;
         } else {
-           this->_hitPoints += amount;
+            this->_hitPoints += amount;
         }
     } else {
         std::cout << "ClapTrap " << this->_name

@@ -20,8 +20,8 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const std::string name)
     : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << RED_START << "ClapTrap " << this->_name << " is created" << COLOR_END
-              << std::endl;
+    std::cout << RED_START << "ClapTrap " << this->_name << " is created"
+              << COLOR_END << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -29,8 +29,8 @@ ClapTrap::ClapTrap(const ClapTrap& other)
       _hitPoints(other.getHitPoints()),
       _energyPoints(other.getEnergyPoints()),
       _attackDamage(other.getAttackDamage()) {
-    std::cout << RED_START << "ClapTrap " << this->_name << " is Copy constructor created"
-              << COLOR_END << std::endl;
+    std::cout << RED_START << "ClapTrap " << this->_name
+              << " is Copy constructor created" << COLOR_END << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
@@ -47,8 +47,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << RED_START << "ClapTrap " << this->_name << " is destroyed" << COLOR_END
-              << std::endl;
+    std::cout << RED_START << "ClapTrap " << this->_name << " is destroyed"
+              << COLOR_END << std::endl;
 }
 
 /**
@@ -86,14 +86,14 @@ void ClapTrap::takeDamage(unsigned int amount) {
  */
 void ClapTrap::beRepaired(unsigned int amount) {
     if (this->_energyPoints > 0) {
-        std::cout << "ClapTrap " << this->_name << " repaired itself for " << amount
-                  << " hit points! Feeling better!" << std::endl;
+        std::cout << "ClapTrap " << this->_name << " repaired itself for "
+                  << amount << " hit points! Feeling better!" << std::endl;
         --this->_energyPoints;
 
         if (this->_hitPoints + amount < this->_hitPoints) {
-           this->_hitPoints = UINT_MAX;
+            this->_hitPoints = UINT_MAX;
         } else {
-           this->_hitPoints += amount;
+            this->_hitPoints += amount;
         }
     } else {
         std::cout << "ClapTrap " << this->_name

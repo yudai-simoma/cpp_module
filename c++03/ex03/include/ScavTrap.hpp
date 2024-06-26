@@ -28,7 +28,7 @@ class ScavTrap : public virtual ClapTrap {
 
     void attack(const std::string& target);
     void guardGate();
-   
+
    protected:
     static const unsigned int SCAVTRAP_DEFAULT_HIT_POINTS = 100;
     static const unsigned int SCAVTRAP_DEFAULT_ENERGY_POINTS = 50;

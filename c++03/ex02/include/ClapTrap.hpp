@@ -13,9 +13,9 @@
 #ifndef __CLAP_TRAP_HPP__
 #define __CLAP_TRAP_HPP__
 
+#include <climits>
 #include <iostream>
 #include <string>
-#include <climits>
 
 // 赤色の開始
 #define RED_START "\033[1;31m"
