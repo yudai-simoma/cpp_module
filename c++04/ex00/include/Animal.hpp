@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 00:06:24 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/24 00:37:08 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/03 01:11:09 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,19 @@
 #define COLOR_END "\033[0m"
 
 class Animal {
-	public:
-		Animal();
-		Animal(const Animal& other);
-		Animal& operator=(const Animal& other);
-		~Animal();
-		
-		virtual void makeSound();
+   public:
+    Animal();
+    Animal(const Animal& other);
+    Animal& operator=(const Animal& other);
+    virtual ~Animal();
 
-		const std::string& getType() const;
-		void setType(const std::string& type);
-	protected:
-		std::string _type;
+    virtual void makeSound() const;
+
+    const std::string& getType() const;
+    void setType(const std::string& type);
+
+   protected:
+    std::string _type;
 };
-
-std::ostream& operator<<(std::ostream& os, const Animal& animal);
 
 #endif

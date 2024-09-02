@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/03 00:38:34 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/03 00:54:34 by yshimoma         ###   ########.fr       */
+/*   Created: 2024/09/03 01:15:54 by yshimoma          #+#    #+#             */
+/*   Updated: 2024/09/03 01:36:06 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __DOG_HPP_
-#define __DOG_HPP_
+#ifndef __WRONG_CAT_HPP_
+#define __WRONG_CAT_HPP_
 
 #include <iostream>
 #include <string>
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Dog : public Animal {
+class WrongCat : public WrongAnimal {
    public:
-    Dog();
-    Dog(const Dog& other);
-    Dog& operator=(const Dog& other);
-    ~Dog();
+    WrongCat();
+    WrongCat(const WrongCat& other);
+    WrongCat& operator=(const WrongCat& other);
+    ~WrongCat();
 
     void makeSound() const;
 
    protected:
-    static const std::string DOG_TYPE;
+    static const std::string WRONG_CAT_TYPE;
 
    private:
 };
