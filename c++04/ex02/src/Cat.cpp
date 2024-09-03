@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 23:37:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/03 18:21:48 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:37:45 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Cat::Cat(const Cat& other) : Animal(other) {
 Cat& Cat::operator=(const Cat& other) {
     std::cout << RED_START << "Cat: Copy assignment" << COLOR_END << std::endl;
     if (this != &other) {
+        delete this->brain;
         Animal::operator=(other);
         this->brain = new Brain(*(other.brain));
     }
@@ -36,7 +37,7 @@ Cat& Cat::operator=(const Cat& other) {
 }
 
 Cat::~Cat() {
-    delete (this->brain);
+    delete this->brain;
     std::cout << RED_START << "Cat: Destructor" << COLOR_END << std::endl;
 }
 

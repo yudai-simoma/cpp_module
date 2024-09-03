@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 02:02:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/03 18:39:16 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:38:45 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main() {
     j->makeSound();  // will output the cat sound!
     i->makeSound();
     // meta->makeSound();
-    // delete (meta);
-    delete (j);
-    delete (i);
+    // delete meta;
+    delete j;
+    delete i;
 
     // コピーコンストラクタのテスト
     Cat originalCat;

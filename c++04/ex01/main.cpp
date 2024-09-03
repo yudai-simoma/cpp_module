@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 02:02:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/03 14:00:51 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:38:27 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main() {
         }
     }
     for (int k = 0; k < ANIMAL_SIZE; k++) {
-        delete (animals[k]);
+        delete animals[k];
     }
 
     // ディープコピーが正しく行われていることを確認
