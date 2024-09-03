@@ -36,7 +36,7 @@ Cat& Cat::operator=(const Cat& other) {
 }
 
 Cat::~Cat() {
-    delete(this->brain);
+    delete (this->brain);
     std::cout << RED_START << "Cat: Destructor" << COLOR_END << std::endl;
 }
 
@@ -45,9 +45,9 @@ void Cat::makeSound() const {
 }
 
 std::string Cat::getIdea(int index) const {
-	return this->brain->getIdea(index);
+    return this->brain->getIdea(index);
 }
 
 void Cat::setIdea(int index, const std::string& idea) {
-	this->brain->setIdea(index, idea);
+    this->brain->setIdea(index, idea);
 }

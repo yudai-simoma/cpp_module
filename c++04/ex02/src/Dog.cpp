@@ -36,7 +36,7 @@ Dog& Dog::operator=(const Dog& other) {
 }
 
 Dog::~Dog() {
-    delete(this->brain);
+    delete (this->brain);
     std::cout << RED_START << "Dog: Destructor" << COLOR_END << std::endl;
 }
 
@@ -45,9 +45,9 @@ void Dog::makeSound() const {
 }
 
 std::string Dog::getIdea(int index) const {
-	return this->brain->getIdea(index);
+    return this->brain->getIdea(index);
 }
 
 void Dog::setIdea(int index, const std::string& idea) {
-	this->brain->setIdea(index, idea);
+    this->brain->setIdea(index, idea);
 }

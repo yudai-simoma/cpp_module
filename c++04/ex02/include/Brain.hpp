@@ -21,17 +21,18 @@
 #define MAX_IDEAS 100
 
 class Brain {
-	public:
-		Brain();
-		Brain(Brain& other);
-		Brain& operator=(const Brain& other);
-		~Brain();
+   public:
+    Brain();
+    Brain(Brain& other);
+    Brain& operator=(const Brain& other);
+    ~Brain();
 
-        std::string getIdea(int index) const;
-        void setIdea(int index, const std::string& idea);
-	protected:
-	private:
-		std::string _ideas[MAX_IDEAS];
+    std::string getIdea(int index) const;
+    void setIdea(int index, const std::string& idea);
+
+   protected:
+   private:
+    std::string _ideas[MAX_IDEAS];
 };
 
 #endif

@@ -11,12 +11,10 @@
 /* ************************************************************************** */
 
 #include "./include/Animal.hpp"
-#include "./include/Dog.hpp"
 #include "./include/Cat.hpp"
+#include "./include/Dog.hpp"
 
-int main()
-{
-
+int main() {
     // const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
@@ -42,5 +40,5 @@ int main()
     assignedDog.makeSound();
     std::cout << "Assigned Dog type: " << assignedDog.getType() << std::endl;
 
-	return 0;
+    return 0;
 }

@@ -28,13 +28,14 @@ class Dog : public Animal {
 
     void makeSound() const;
 
-      std::string getIdea(int index) const;
-      void setIdea(int index, const std::string& idea);
+    std::string getIdea(int index) const;
+    void setIdea(int index, const std::string& idea);
+
    protected:
     static const std::string DOG_TYPE;
 
    private:
-      Brain *brain;
+    Brain* brain;
 };
 
 #endif

@@ -16,26 +16,27 @@ Brain::Brain() {
     for (int i = 0; i < MAX_IDEAS; i++) {
         _ideas[i] = "";
     }
-    std::cout << RED_START << "Brain: Default constructor" << COLOR_END << std::endl;
+    std::cout << RED_START << "Brain: Default constructor" << COLOR_END
+              << std::endl;
 }
 
 Brain::Brain(Brain& other) {
-	for (int i = 0; i < MAX_IDEAS; i++) {
-		this->_ideas[i] = other.getIdea(i);
-	}
+    for (int i = 0; i < MAX_IDEAS; i++) {
+        this->_ideas[i] = other.getIdea(i);
+    }
     std::cout << RED_START << "Brain: Copy constructor" << COLOR_END
               << std::endl;
 }
 
 Brain& Brain::operator=(const Brain& other) {
-	if (this != &other) {
-		for (int i = 0; i < MAX_IDEAS; i++) {
-			this->_ideas[i] = other.getIdea(i);
-		}
-	}
+    if (this != &other) {
+        for (int i = 0; i < MAX_IDEAS; i++) {
+            this->_ideas[i] = other.getIdea(i);
+        }
+    }
     std::cout << RED_START << "Brain: Copy assignment" << COLOR_END
               << std::endl;
-	return *this;
+    return *this;
 }
 
 Brain::~Brain() {
@@ -43,13 +44,13 @@ Brain::~Brain() {
 }
 
 std::string Brain::getIdea(int index) const {
-	if (index < 0 || index >= MAX_IDEAS)
-	    std::cout << "Error: Invalid idea index: " << index << std::endl;
-	return this->_ideas[index];
+    if (index < 0 || index >= MAX_IDEAS)
+        std::cout << "Error: Invalid idea index: " << index << std::endl;
+    return this->_ideas[index];
 }
 
 void Brain::setIdea(int index, const std::string& idea) {
-	if (index < 0 || index >= MAX_IDEAS)
-	    std::cout << "Error: Invalid idea index: " << index << std::endl;
-	this->_ideas[index] = idea;
+    if (index < 0 || index >= MAX_IDEAS)
+        std::cout << "Error: Invalid idea index: " << index << std::endl;
+    this->_ideas[index] = idea;
 }
