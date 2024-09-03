@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 00:39:26 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/03 00:54:26 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:17:33 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ Dog::Dog() : Animal() {
 }
 
 Dog::Dog(const Dog& other) : Animal(other) {
-    this->_type = other._type;
     std::cout << RED_START << "Dog: Copy constructor" << COLOR_END << std::endl;
 }
 
