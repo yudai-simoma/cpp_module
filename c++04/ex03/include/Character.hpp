@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:48:25 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/04 16:28:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:05:08 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
+
+#define MAX_MATERIA 4
 
 class Character : ICharacter {
 	public:
@@ -32,7 +34,7 @@ class Character : ICharacter {
 		void use(int idx, Character& target);
 	private:
 		std::string _name;
-		AMateria* _materia[4];
+		AMateria* _materia[MAX_MATERIA];
 };
 
 #endif
