@@ -6,13 +6,12 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 02:12:54 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/06/23 03:37:49 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:00:29 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-// TODO: claptrapのnameが出力されない。各コンストラクタと、wohAmI()
 int main() {
     // 1. DiamondTrapのインスタンス化と基本動作確認
     DiamondTrap diamond1("Sparkly");
