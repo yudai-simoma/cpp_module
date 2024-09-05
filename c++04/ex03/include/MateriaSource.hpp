@@ -16,21 +16,22 @@
 #include <string>
 
 #include "AMateria.hpp"
-#include "IMateriaSource.hpp"
 #include "Config.hpp"
+#include "IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource {
-	public:
-		MateriaSource();
-		MateriaSource(MateriaSource& other);
-		MateriaSource& operator=(const MateriaSource& other);
-		~MateriaSource();
+   public:
+    MateriaSource();
+    MateriaSource(MateriaSource& other);
+    MateriaSource& operator=(const MateriaSource& other);
+    ~MateriaSource();
 
-		void learnMateria(AMateria* m);
-		AMateria* createMateria(std::string const & type);
-	protected:
-	private:
-		AMateria* _materias[MAX_MATERIA];
+    void learnMateria(AMateria* m);
+    AMateria* createMateria(std::string const& type);
+
+   protected:
+   private:
+    AMateria* _materias[MAX_MATERIA];
 };
 
 #endif

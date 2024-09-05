@@ -15,8 +15,9 @@
 const std::string Ice::ICE_TYPE = "ice";
 
 Ice::Ice() {
-	this->setType(Ice::ICE_TYPE);
-	std::cout << RED_START << "Ice: Default constructor" << COLOR_END << std::endl;
+    this->setType(Ice::ICE_TYPE);
+    std::cout << RED_START << "Ice: Default constructor" << COLOR_END
+              << std::endl;
 }
 
 Ice::Ice(Ice& other) : AMateria(other) {
@@ -24,11 +25,11 @@ Ice::Ice(Ice& other) : AMateria(other) {
 }
 
 Ice& Ice::operator=(const Ice& other) {
-	if (this != &other) {
-		AMateria::operator=(other);
-	}
+    if (this != &other) {
+        AMateria::operator=(other);
+    }
     std::cout << RED_START << "Ice: Copy assignment" << COLOR_END << std::endl;
-	return *this;
+    return *this;
 }
 
 Ice::~Ice() {
@@ -36,9 +37,10 @@ Ice::~Ice() {
 }
 
 AMateria* Ice::clone() const {
-	return new Ice();
+    return new Ice();
 }
 
 void Ice::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *"
+              << std::endl;
 }

@@ -20,17 +20,18 @@
 #include "Config.hpp"
 
 class Ice : public AMateria {
-	public:
-		Ice();
-		Ice(Ice& other);
-		Ice& operator=(const Ice& other);
-		~Ice();
+   public:
+    Ice();
+    Ice(Ice& other);
+    Ice& operator=(const Ice& other);
+    ~Ice();
 
-		virtual AMateria* clone() const;
-		void use(ICharacter& target);
-	protected:
-	private:
-	    static const std::string ICE_TYPE;
+    virtual AMateria* clone() const;
+    void use(ICharacter& target);
+
+   protected:
+   private:
+    static const std::string ICE_TYPE;
 };
 
 #endif

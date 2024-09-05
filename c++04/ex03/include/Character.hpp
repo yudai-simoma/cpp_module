@@ -16,24 +16,25 @@
 #include <string>
 
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
 #include "Config.hpp"
+#include "ICharacter.hpp"
 
 class Character : public ICharacter {
-	public:
-		Character();
-		Character(std::string const & name);
-		Character(Character& other);
-		Character& operator=(const Character& other);
-		~Character();
-		
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, ICharacter& target);
-		std::string const & getName() const;
-	private:
-		std::string _name;
-		AMateria* _materias[MAX_MATERIA];
+   public:
+    Character();
+    Character(std::string const& name);
+    Character(Character& other);
+    Character& operator=(const Character& other);
+    ~Character();
+
+    void equip(AMateria* m);
+    void unequip(int idx);
+    void use(int idx, ICharacter& target);
+    std::string const& getName() const;
+
+   private:
+    std::string _name;
+    AMateria* _materias[MAX_MATERIA];
 };
 
 #endif

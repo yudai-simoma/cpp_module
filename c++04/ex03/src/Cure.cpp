@@ -15,20 +15,22 @@
 const std::string Cure::CURE_TYPE = "cure";
 
 Cure::Cure() {
-	this->setType(Cure::CURE_TYPE);
-	std::cout << RED_START << "Cure: Default constructor" << COLOR_END << std::endl;
+    this->setType(Cure::CURE_TYPE);
+    std::cout << RED_START << "Cure: Default constructor" << COLOR_END
+              << std::endl;
 }
 
 Cure::Cure(Cure& other) : AMateria(other) {
-    std::cout << RED_START << "Cure: Copy constructor" << COLOR_END << std::endl;
+    std::cout << RED_START << "Cure: Copy constructor" << COLOR_END
+              << std::endl;
 }
 
 Cure& Cure::operator=(const Cure& other) {
-	if (this != &other) {
-		AMateria::operator=(other);
-	}
+    if (this != &other) {
+        AMateria::operator=(other);
+    }
     std::cout << RED_START << "Cure: Copy assignment" << COLOR_END << std::endl;
-	return *this;
+    return *this;
 }
 
 Cure::~Cure() {
@@ -36,9 +38,9 @@ Cure::~Cure() {
 }
 
 AMateria* Cure::clone() const {
-	return new Cure();
+    return new Cure();
 }
 
 void Cure::use(ICharacter& target) {
-	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+    std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

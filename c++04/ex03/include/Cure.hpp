@@ -20,17 +20,18 @@
 #include "Config.hpp"
 
 class Cure : public AMateria {
-	public:
-		Cure();
-		Cure(Cure& other);
-		Cure& operator=(const Cure& other);
-		~Cure();
+   public:
+    Cure();
+    Cure(Cure& other);
+    Cure& operator=(const Cure& other);
+    ~Cure();
 
-		virtual AMateria* clone() const;
-		void use(ICharacter& target);
-	protected:
-	private:
-	    static const std::string CURE_TYPE;
+    virtual AMateria* clone() const;
+    void use(ICharacter& target);
+
+   protected:
+   private:
+    static const std::string CURE_TYPE;
 };
 
 #endif

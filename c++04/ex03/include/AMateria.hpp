@@ -16,27 +16,27 @@
 #include <iostream>
 #include <string>
 
-#include "ICharacter.hpp"
 #include "Config.hpp"
+#include "ICharacter.hpp"
 
 // class ICharacter;
 
-class AMateria
-{
-	public:
-		AMateria();
-		AMateria(std::string const & type);
-		AMateria(AMateria& other);
-		AMateria& operator=(const AMateria& other);
-		virtual ~AMateria();
+class AMateria {
+   public:
+    AMateria();
+    AMateria(std::string const& type);
+    AMateria(AMateria& other);
+    AMateria& operator=(const AMateria& other);
+    virtual ~AMateria();
 
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
-		std::string const & getType() const;
-		void setType(const std::string type);
-	protected:
-	private:
-		std::string _type;
+    virtual AMateria* clone() const = 0;
+    virtual void use(ICharacter& target);
+    std::string const& getType() const;
+    void setType(const std::string type);
+
+   protected:
+   private:
+    std::string _type;
 };
 
 #endif
