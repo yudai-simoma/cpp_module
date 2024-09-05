@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:00:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/05 12:05:44 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:40:01 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int main()
     
     // Character のテスト
 	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	AMateria* tmp1;
+	AMateria* tmp2;
+	tmp1 = src->createMateria("ice");
+	me->equip(tmp1);
+	tmp2 = src->createMateria("cure");
+	me->equip(tmp2);
 
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);  // ice を使う
@@ -55,11 +56,13 @@ int main()
 	other.use(0, *bob);  // cure を使う
 
 	// Ice/Cure のクローンメソッドのテスト
-	AMateria* iceClone = tmp->clone();
+	AMateria* iceClone = tmp2->clone();
 	me->equip(iceClone);  // クローンされた cure を装備
 	me->use(0, *bob);  // クローンされた cure を使う
 
 	// メモリ解放のテスト
+	delete tmp1;
+	delete tmp2;
 	delete bob;
 	delete me;
 	delete src;
