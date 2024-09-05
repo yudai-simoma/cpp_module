@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
+/*   Config.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 01:39:28 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/05 10:26:46 by yshimoma         ###   ########.fr       */
+/*   Created: 2024/09/05 10:25:18 by yshimoma          #+#    #+#             */
+/*   Updated: 2024/09/05 11:22:06 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __I_MATERIA_SOURCE_HPP__
-#define __I_MATERIA_SOURCE_HPP__
+#ifndef __CONFIG_HPP__
+#define __CONFIG_HPP__
 
-#include <string>
-
-#include "AMateria.hpp"
-#include "Config.hpp"
-
-class IMateriaSource
-{
-	public:
-		virtual ~IMateriaSource() {}
-
-		virtual void learnMateria(AMateria*) = 0;
-		virtual AMateria* createMateria(std::string const & type) = 0;
-};
+#define RED_START "\033[1;31m"
+#define COLOR_END "\033[0m"
+#define MAX_MATERIA 4
 
 #endif

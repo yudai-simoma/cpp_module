@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 22:35:12 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/04 15:48:28 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:51:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 
 #include "AMateria.hpp"
+#include "Config.hpp"
 
 class Cure : public AMateria {
 	public:
@@ -31,7 +32,5 @@ class Cure : public AMateria {
 	private:
 	    static const std::string CURE_TYPE;
 };
-
-
 
 #endif

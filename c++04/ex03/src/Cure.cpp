@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:43:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/04 15:54:24 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:36:28 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ AMateria* Cure::clone() const {
 }
 
 void Cure::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

@@ -9,12 +9,11 @@ INCLUDE			=	-Iinclude
 
 # find . -type f -name "*.cpp" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/' | pbcopy
 SRCS			=	./main.cpp \
-					./src/Animal.cpp \
-					./src/Brain.cpp \
-					./src/Cat.cpp \
-					./src/Dog.cpp \
-					./src/WrongAnimal.cpp \
-					./src/WrongCat.cpp \
+					./src/AMateria.cpp \
+					./src/Character.cpp \
+					./src/Cure.cpp \
+					./src/Ice.cpp \
+					./src/MateriaSource.cpp \
 
 OBJS			=	${addprefix ${OBJ_DIR}/, ${SRCS:.cpp=.o}}
 DEPS			=	${OBJS:.o=.d}

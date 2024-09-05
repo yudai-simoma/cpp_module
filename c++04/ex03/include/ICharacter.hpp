@@ -6,16 +6,18 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 00:40:47 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/04 01:41:32 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:25:12 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __I_CHARACTER_HPP
-#define __I_CHARACTER_HPP
+#ifndef __I_CHARACTER_HPP__
+#define __I_CHARACTER_HPP__
 
 #include <string>
 
-#include "AMateria.hpp"
+#include "Config.hpp"
+
+class AMateria;
 
 class ICharacter
 {

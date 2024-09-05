@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 00:22:22 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/04 15:48:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/05 10:26:40 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 
 #include "AMateria.hpp"
+#include "Config.hpp"
 
 class Ice : public AMateria {
 	public:
