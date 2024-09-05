@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:59:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/09/05 17:00:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:32:49 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ Character::Character(const std::string& name) : _name(name) {
 
 Character::Character(Character& other) : _name(other._name) {
 	for (int i = 0; i < MAX_MATERIA; i++) {
-		if (this->_materias[i] != NULL) {
-			delete this->_materias[i];
-		}
 		if (other._materias[i] != NULL) {
 			this->_materias[i] = other._materias[i]->clone();
 		} else {
