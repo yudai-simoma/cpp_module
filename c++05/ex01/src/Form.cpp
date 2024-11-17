@@ -34,7 +34,7 @@ Form::Form(std::string const& name, int gradeRequiredToSign,
         throw Form::GradeTooLowException();
     }
     std::cout << RED_START << "Form: constructor called with " << *this
-            << COLOR_END << std::endl;
+              << COLOR_END << std::endl;
 }
 
 Form::Form(const Form& other)

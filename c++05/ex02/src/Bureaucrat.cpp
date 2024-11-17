@@ -47,8 +47,9 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << RED_START << "Bureaucrat: Destructor called for " << this->_name
-              << " (grade " << this->_grade << ")" << COLOR_END << std::endl;
+    std::cout << RED_START << "Bureaucrat: Destructor called for "
+              << this->_name << " (grade " << this->_grade << ")" << COLOR_END
+              << std::endl;
 }
 
 std::string const& Bureaucrat::getName() const {
@@ -83,7 +84,7 @@ void Bureaucrat::signForm(AForm& form) {
     }
 }
 
-void Bureaucrat::executeForm(AForm const & form) {
+void Bureaucrat::executeForm(AForm const& form) {
     try {
         form.execute(*this);
         std::cout << this->_name << " executed " << form.getName() << std::endl;

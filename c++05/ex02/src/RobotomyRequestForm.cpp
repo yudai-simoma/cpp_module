@@ -12,50 +12,61 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("", this->GRADE_REQUIRED_TO_SIGN, this->GRADE_REQUIRED_TO_EXECUTE), _target("") {
-    std::cout << RED_START << "RobotomyRequestForm: Default constructor" << COLOR_END
-              << std::endl;
+RobotomyRequestForm::RobotomyRequestForm()
+    : AForm("", this->GRADE_REQUIRED_TO_SIGN, this->GRADE_REQUIRED_TO_EXECUTE),
+      _target("") {
+    std::cout << RED_START << "RobotomyRequestForm: Default constructor"
+              << COLOR_END << std::endl;
     this->initialize();
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const& target, std::string const& name, int gradeRequiredToSign, int gradeRequiredToExecute)
-	: AForm(name, gradeRequiredToSign, gradeRequiredToExecute), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string const& target,
+                                         std::string const& name,
+                                         int gradeRequiredToSign,
+                                         int gradeRequiredToExecute)
+    : AForm(name, gradeRequiredToSign, gradeRequiredToExecute),
+      _target(target) {
     if (gradeRequiredToSign < 1 || gradeRequiredToExecute < 1) {
         throw AForm::GradeTooHighException();
     }
-    if (gradeRequiredToSign > this->GRADE_REQUIRED_TO_SIGN || gradeRequiredToExecute > this->GRADE_REQUIRED_TO_EXECUTE) {
+    if (gradeRequiredToSign > this->GRADE_REQUIRED_TO_SIGN ||
+        gradeRequiredToExecute > this->GRADE_REQUIRED_TO_EXECUTE) {
         throw AForm::GradeTooLowException();
     }
-    std::cout << RED_START << "RobotomyRequestForm: constructor called with " << *this
-              << COLOR_END << std::endl;
+    std::cout << RED_START << "RobotomyRequestForm: constructor called with "
+              << *this << COLOR_END << std::endl;
     this->initialize();
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other), _target(other._target) {
-    std::cout << RED_START << "RobotomyRequestForm: Copy constructor" << COLOR_END << std::endl;
-}
-
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
-    std::cout << RED_START << "RobotomyRequestForm: Copy assignment" << COLOR_END << std::endl;
-	if (this != &other) {
-		AForm::operator=(other);
-        this->_target = other._target;
-	}
-	return *this;
-}
-
-RobotomyRequestForm::~RobotomyRequestForm() {
-    std::cout << RED_START << "RobotomyRequestForm: Destructor called for " << this->getName()
-              << " (signed: " << (this->getIsSigned() ? "true" : "false")
-              << ", sign grade: " << this->getGradeRequiredToSign()
-              << ", execute grade: " << this->getGradeRequiredToExecute() << ")"
-              << " target: " << this->_target
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
+    : AForm(other), _target(other._target) {
+    std::cout << RED_START << "RobotomyRequestForm: Copy constructor"
               << COLOR_END << std::endl;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-	// 実行権限がない場合、例外をthrowする
-	AForm::isExecutable(executor);
+RobotomyRequestForm& RobotomyRequestForm::operator=(
+    const RobotomyRequestForm& other) {
+    std::cout << RED_START << "RobotomyRequestForm: Copy assignment"
+              << COLOR_END << std::endl;
+    if (this != &other) {
+        AForm::operator=(other);
+        this->_target = other._target;
+    }
+    return *this;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm() {
+    std::cout << RED_START << "RobotomyRequestForm: Destructor called for "
+              << this->getName()
+              << " (signed: " << (this->getIsSigned() ? "true" : "false")
+              << ", sign grade: " << this->getGradeRequiredToSign()
+              << ", execute grade: " << this->getGradeRequiredToExecute() << ")"
+              << " target: " << this->_target << COLOR_END << std::endl;
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const& executor) const {
+    // 実行権限がない場合、例外をthrowする
+    AForm::isExecutable(executor);
 
     // ドリルのような音
     std::cout << "brrrrrrr......" << std::endl;
@@ -65,7 +76,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
     int success = rand() % 2;
 
     if (success) {
-        std::cout << this->_target << " has been robotomized successfully." << std::endl;
+        std::cout << this->_target << " has been robotomized successfully."
+                  << std::endl;
     } else {
         std::cout << "Robotomy on " << this->_target << " failed." << std::endl;
     }

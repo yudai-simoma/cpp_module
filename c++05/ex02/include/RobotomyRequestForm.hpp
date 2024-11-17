@@ -24,18 +24,18 @@
 class RobotomyRequestForm : public AForm {
    public:
     RobotomyRequestForm();
-    RobotomyRequestForm(std::string const& target, std::string const& name, int gradeRequiredToSign,
-         int gradeRequiredToExecute);
+    RobotomyRequestForm(std::string const& target, std::string const& name,
+                        int gradeRequiredToSign, int gradeRequiredToExecute);
     RobotomyRequestForm(const RobotomyRequestForm& other);
     RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
     ~RobotomyRequestForm();
 
-    void execute(Bureaucrat const & executor) const;
+    void execute(Bureaucrat const& executor) const;
 
    protected:
    private:
     static void initialize();
-    
+
     static const int GRADE_REQUIRED_TO_SIGN = 72;
     static const int GRADE_REQUIRED_TO_EXECUTE = 45;
     std::string _target;

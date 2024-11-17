@@ -22,7 +22,7 @@ AForm::AForm()
 }
 
 AForm::AForm(std::string const& name, int gradeRequiredToSign,
-           int gradeRequiredToExecute)
+             int gradeRequiredToExecute)
     : _name(name),
       _isSigned(false),
       _gradeRequiredToSign(gradeRequiredToSign),
@@ -34,7 +34,7 @@ AForm::AForm(std::string const& name, int gradeRequiredToSign,
         throw AForm::GradeTooLowException();
     }
     std::cout << RED_START << "AForm: constructor called with " << *this
-            << COLOR_END << std::endl;
+              << COLOR_END << std::endl;
 }
 
 AForm::AForm(const AForm& other)
@@ -53,7 +53,8 @@ AForm& AForm::operator=(const AForm& other) {
         this->_gradeRequiredToSign = other._gradeRequiredToSign;
         this->_gradeRequiredToExecute = other._gradeRequiredToExecute;
     }
-    std::cout << RED_START << "AForm: Copy assignment" << COLOR_END << std::endl;
+    std::cout << RED_START << "AForm: Copy assignment" << COLOR_END
+              << std::endl;
     return *this;
 }
 
@@ -81,7 +82,7 @@ int AForm::getGradeRequiredToExecute() const {
     return this->_gradeRequiredToExecute;
 }
 
-void AForm:: beSigned(Bureaucrat & bureaucrat) {
+void AForm::beSigned(Bureaucrat& bureaucrat) {
     if (this->_isSigned == true) {
         throw AForm::AlreadySignedException();
     } else if (this->_gradeRequiredToSign >= bureaucrat.getGrade()) {
@@ -91,7 +92,7 @@ void AForm:: beSigned(Bureaucrat & bureaucrat) {
     }
 }
 
-void AForm::isExecutable(Bureaucrat const & bureaucrat) const {
+void AForm::isExecutable(Bureaucrat const& bureaucrat) const {
     if (!this->_isSigned) {
         throw AForm::NotSignedException();
     }

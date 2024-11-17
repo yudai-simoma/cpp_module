@@ -21,13 +21,13 @@
 class ShrubberyCreationForm : public AForm {
    public:
     ShrubberyCreationForm();
-    ShrubberyCreationForm(std::string const& target, std::string const& name, int gradeRequiredToSign,
-         int gradeRequiredToExecute);
+    ShrubberyCreationForm(std::string const& target, std::string const& name,
+                          int gradeRequiredToSign, int gradeRequiredToExecute);
     ShrubberyCreationForm(const ShrubberyCreationForm& other);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
     ~ShrubberyCreationForm();
 
-    void execute(Bureaucrat const & executor) const;
+    void execute(Bureaucrat const& executor) const;
 
    protected:
    private:
