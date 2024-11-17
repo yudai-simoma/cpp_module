@@ -7,6 +7,7 @@ RUN apt update && apt install -y \
     make \
     build-essential \
     cmake \
+    valgrind \ 
     # 標準C++ライブラリの開発ファイルをインストール
     libstdc++-11-dev \
     # 他に必要なツールがあればここに追加
