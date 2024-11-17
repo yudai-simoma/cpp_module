@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 22:22:13 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/16 20:10:06 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/17 13:25:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Bureaucrat {
    public:
     Bureaucrat();
     Bureaucrat(std::string const& name, int grade);
-    Bureaucrat(Bureaucrat& other);
+    Bureaucrat(const Bureaucrat& other);
     Bureaucrat& operator=(const Bureaucrat& other);
     ~Bureaucrat();
 

@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:58:28 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/16 22:35:16 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/17 15:44:19 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ Form::Form(std::string const& name, int gradeRequiredToSign,
         throw Form::GradeTooLowException();
     }
     std::cout << RED_START << "Form: constructor called with " << *this
-              << std::endl;
+            << COLOR_END << std::endl;
 }
 
-Form::Form(Form& other)
+Form::Form(const Form& other)
     : _name(other._name),
       _isSigned(false),
       _gradeRequiredToSign(other._gradeRequiredToSign),
@@ -58,7 +58,11 @@ Form& Form::operator=(const Form& other) {
 }
 
 Form::~Form() {
-    std::cout << RED_START << "Form: Destructor" << COLOR_END << std::endl;
+    std::cout << RED_START << "AForm: Destructor called for " << this->_name
+              << " (signed: " << (this->_isSigned ? "true" : "false")
+              << ", sign grade: " << this->_gradeRequiredToSign
+              << ", execute grade: " << this->_gradeRequiredToExecute << ")"
+              << COLOR_END << std::endl;
 }
 
 std::string const& Form::getName() const {

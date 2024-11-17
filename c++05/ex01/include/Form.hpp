@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:58:43 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/16 22:26:23 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/17 13:25:03 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Form {
     Form();
     Form(std::string const& name, int gradeRequiredToSign,
          int gradeRequiredToExecute);
-    Form(Form& other);
+    Form(const Form& other);
     Form& operator=(const Form& other);
     ~Form();
 

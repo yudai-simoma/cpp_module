@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:26:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/16 20:08:02 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/17 15:43:05 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ Bureaucrat::Bureaucrat(std::string const& name, int grade)
     }
     std::cout << RED_START
               << "Bureaucrat: constructor called with name: " << name
-              << ", grade: " << grade << std::endl;
+              << ", grade: " << grade << COLOR_END << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& other)
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
     : _name(other._name), _grade(other._grade) {
     std::cout << RED_START << "Bureaucrat: Copy constructor" << COLOR_END
               << std::endl;
@@ -47,8 +47,8 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << RED_START << "Bureaucrat: Destructor" << COLOR_END
-              << std::endl;
+    std::cout << RED_START << "Bureaucrat: Destructor called for " << this->_name
+              << " (grade " << this->_grade << ")" << COLOR_END << std::endl;
 }
 
 std::string const& Bureaucrat::getName() const {
