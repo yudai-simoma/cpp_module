@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 19:10:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/17 20:19:09 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/17 23:49:39 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ class Intern {
 
    protected:
    private:
-    typedef AForm* (*createFormFunc)(std::string const& target);
     static const int NUM_FORMS = 3;
     enum FormType {
         RobotomyRequest = 0,
@@ -41,7 +40,5 @@ class Intern {
         ShrubberyCreation = 2
     };
 };
-
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif
