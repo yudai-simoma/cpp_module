@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/20 02:15:35 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/20 02:33:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ bool ConversionUtils::isSingleChar(const std::string &input) {
 
 // 整数チェック
 bool ConversionUtils::isInteger(const std::string &input, long &value) {
-    if (input.empty()) return false;
+    if (input.empty()) {
+        return false;
+    }
 
     for (size_t i = 0; i < input.length(); ++i) {
         if (!std::isdigit(input[i]) &&
@@ -110,7 +112,9 @@ bool ConversionUtils::isInteger(const std::string &input, long &value) {
 // 浮動小数点数チェック
 bool ConversionUtils::isFloatingPoint(const std::string &input,
                                       bool &endsWithF) {
-    if (input.empty()) return false;
+    if (input.empty()) {
+        return false;
+    }
 
     std::string trimmedInput = input;
     size_t length = input.length();
@@ -127,11 +131,16 @@ bool ConversionUtils::isFloatingPoint(const std::string &input,
 
     for (size_t i = 0; i < trimmedInput.length(); ++i) {
         if (trimmedInput[i] == '.') {
-            if (hasDot) return false;  // ドットが複数
+            // ドットが複数
+            if (hasDot) {
+                return false;
+            }
             hasDot = true;
         } else if (trimmedInput[i] == 'e' || trimmedInput[i] == 'E') {
-            if (hasE || i == 0 || i == trimmedInput.length() - 1)
-                return false;  // e/Eが不正な位置
+            // e/Eが不正な位置
+            if (hasE || i == 0 || i == trimmedInput.length() - 1) {
+                return false;
+            }
             hasE = true;
 
             // 符号のスキップ
@@ -142,10 +151,12 @@ bool ConversionUtils::isFloatingPoint(const std::string &input,
         } else if (!std::isdigit(trimmedInput[i]) &&
                    !(i == 0 &&
                      (trimmedInput[i] == '-' || trimmedInput[i] == '+'))) {
-            return false;  // 不正な文字
+            // 不正な文字
+            return false;
         }
     }
 
+    //trimmedInputが浮動小数点数の構文に正しく含まれているか確認
     char *endPtr;
     std::strtod(trimmedInput.c_str(), &endPtr);
     return *endPtr == '\0';
