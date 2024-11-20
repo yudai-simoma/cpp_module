@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/20 02:33:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/20 09:54:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,29 +56,118 @@ std::string ConversionUtils::determineType(const std::string &input) {
 }
 
 void ConversionUtils::toChar(const std::string input, const std::string &type) {
-    (void)input;
-    (void)type;
-    ConversionUtils::setC('a');
+    if (type == "char") {
+        // 文字型の場合
+        if (input.length() == 1) {
+            ConversionUtils::setC(input[0]);
+            return;
+        }
+    } else if (type == "int") {
+        // 整数型の場合
+        long value = std::strtol(input.c_str(), NULL, 10);
+        // ASCII範囲内の値か確認
+        if (value >= 0 && value <= 255) {
+            ConversionUtils::setC(static_cast<char>(value));
+            return;
+        }
+    } else if (type == "float" || type == "double") {
+        // 浮動小数点型の場合
+        double value = std::strtod(input.c_str(), NULL);
+        // ASCII範囲内の値か確認
+        if (value >= 0.0 && value <= 255.0) {
+            ConversionUtils::setC(static_cast<char>(value));
+            return;
+        }
+    }
+    
+    // 変換できない場合
+    // 空文字列を意味するNULL文字を設定
+    ConversionUtils::setC('\0');
 }
 
 void ConversionUtils::toInt(const std::string input, const std::string &type) {
-    (void)input;
-    (void)type;
-    ConversionUtils::setIntNum(1);
+    if (type == "char") {
+        // 文字型の場合
+        if (input.length() == 1) {
+            ConversionUtils::setIntNum(static_cast<int>(input[0]));
+            return;
+        }
+    } else if (type == "int") {
+        // 整数型の場合
+        long value = std::strtol(input.c_str(), NULL, 10);
+        if (value >= INT_MIN && value <= INT_MAX) {
+            ConversionUtils::setIntNum(static_cast<int>(value));
+            return;
+        }
+    } else if (type == "float" || type == "double") {
+        // 浮動小数点型の場合
+        double value = std::strtod(input.c_str(), NULL);
+        if (value >= INT_MIN && value <= INT_MAX) {
+            ConversionUtils::setIntNum(static_cast<int>(value));
+            return;
+        }
+    }
+
+    // 変換できない場合
+    ConversionUtils::setIntNum(0);
 }
 
 void ConversionUtils::toDouble(const std::string input,
-                               const std::string &type) {
-    (void)input;
-    (void)type;
-    ConversionUtils::setDoubleNum(1.1);
+                                const std::string &type) {
+    if (type == "char") {
+        // 文字型の場合
+        if (input.length() == 1) {
+            ConversionUtils::setDoubleNum(static_cast<double>(input[0]));
+            return;
+        }
+    } else if (type == "int") {
+        // 整数型の場合
+        long value = std::strtol(input.c_str(), NULL, 10);
+        if (value >= INT_MIN && value <= INT_MAX) {
+            ConversionUtils::setDoubleNum(static_cast<double>(value));
+            return;
+        }
+    } else if (type == "float" || type == "double") {
+        // 浮動小数点型の場合
+        char *endPtr;
+        double value = std::strtod(input.c_str(), &endPtr);
+        if (*endPtr == 'f' || *endPtr == '\0') { // 'f' (float) または終端文字
+            ConversionUtils::setDoubleNum(value);
+            return;
+        }
+    }
+
+    // 変換できない場合
+    ConversionUtils::setDoubleNum(0.0);
 }
 
 void ConversionUtils::toFloat(const std::string input,
-                              const std::string &type) {
-    (void)input;
-    (void)type;
-    ConversionUtils::setFloatNum(2.2f);
+                               const std::string &type) {
+    if (type == "char") {
+        // 文字型の場合
+        if (input.length() == 1) {
+            ConversionUtils::setFloatNum(static_cast<float>(input[0]));
+            return;
+        }
+    } else if (type == "int") {
+        // 整数型の場合
+        long value = std::strtol(input.c_str(), NULL, 10);
+        if (value >= INT_MIN && value <= INT_MAX) {
+            ConversionUtils::setFloatNum(static_cast<float>(value));
+            return;
+        }
+    } else if (type == "float" || type == "double") {
+        // 浮動小数点型の場合
+        char *endPtr;
+        double value = std::strtod(input.c_str(), &endPtr);
+        if (*endPtr == 'f' || *endPtr == '\0') { // 'f' (float) または終端文字
+            ConversionUtils::setFloatNum(static_cast<float>(value));
+            return;
+        }
+    }
+
+    // 変換できない場合
+    ConversionUtils::setFloatNum(0.0f);
 }
 
 // 空文字列チェック

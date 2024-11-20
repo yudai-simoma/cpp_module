@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:12:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/20 02:07:06 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/20 09:27:11 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void ScalarConverter::convert(const char *str) {
         return;
     }
 
+    std::cout << "input: " << input << ", type: " << type << std::endl;
     // 有効な型で変換処理を実行
     ConversionUtils::toChar(input, type);
     ConversionUtils::toInt(input, type);
