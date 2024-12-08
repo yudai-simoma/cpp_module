@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 23:36:08 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/20 01:48:08 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:51:27 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void runTests(const std::vector<TestCase>& testCases) {
 }
 
 /**
- * c++ -I./include -std=c++11 ./tester/determineTypeTest.cpp
- * ./src/ConversionUtils.cpp ./src/ScalarConverter.cpp
+ * c++ -I./include -std=c++11 ./tester/determineTypeTest.cpp \
+   ./src/ConversionUtils.cpp ./src/ScalarConverter.cpp && ./a.out
  */
 int main() {
     // テストケースを定義
