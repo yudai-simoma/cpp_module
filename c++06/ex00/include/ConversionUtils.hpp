@@ -6,24 +6,22 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:18:08 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/07 23:38:46 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:23:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __CONVERSION_UTILS_HPP__
 #define __CONVERSION_UTILS_HPP__
 
-#include <float.h>
-
-#include <cctype>
-#include <cfloat>
-#include <climits>  // Add this line
-#include <cstdlib>  // for strtod, strtol
-#include <cstdlib>
 #include <iostream>
+#include <string>
+#include <iomanip>
 #include <limits>
 #include <sstream>
-#include <string>
+#include <cctype>
+#include <cstdlib>
+#include <cmath>
+#include <cfloat>
 
 class ConversionUtils {
    public:
@@ -35,15 +33,14 @@ class ConversionUtils {
     static void printValues();
     static int identifySpecialFloatValue(const char *str);
     static std::string determineType(const std::string &input);
-    static bool isEmpty(const std::string &input);
-    static bool isSingleChar(const std::string &input);
-    static bool isInteger(const std::string &input, long &value);
-    static bool isFloatingPoint(const std::string &input, bool &endsWithF);
-    static bool isSpecialFloatingPoint(const std::string &input);
     static void toChar(const std::string input, const std::string &type);
     static void toInt(const std::string input, const std::string &type);
     static void toFloat(const std::string input, const std::string &type);
     static void toDouble(const std::string input, const std::string &type);
+    static bool isEmpty(const std::string &input);
+    static bool isSingleChar(const std::string &input);
+    static bool isInteger(const std::string &input, long &value);
+    static bool isFloatingPoint(const std::string &input, bool &endsWithF);
 
     static char getC();
     static void setC(char a);
@@ -55,6 +52,13 @@ class ConversionUtils {
     static void setFloatNum(float num);
 
     static const char* specialFloatValues[12][4];
+
+   protected:
+   private:
+    ConversionUtils();
+    ConversionUtils(const ConversionUtils& other);
+    ConversionUtils& operator=(const ConversionUtils& other);
+    ~ConversionUtils();
 };
 
 #endif

@@ -6,29 +6,17 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/08 17:55:04 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:51:25 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ConversionUtils.hpp"
-
-char ConversionUtils::c = '\0';
-int ConversionUtils::intNum = 0;
-double ConversionUtils::doubleNum = 0.0;
-float ConversionUtils::floatNum = 0.0f;
-
-#include <cctype>
-#include <climits>
-#include <cstdlib>
-#include <string>
-#include <iomanip>
-#include <cmath>
+#include "Config.hpp"
 
 void ConversionUtils::printValues() {
     if (std::isprint(ConversionUtils::getC())) {
         std::cout << "char: '" << ConversionUtils::getC() << "'" << std::endl;
     } else if (ConversionUtils::getIntNum() >= 0 && ConversionUtils::getIntNum() <= 255) {
-    // } else if (ConversionUtils::getIntNum() <= INT_MIN && ConversionUtils::getIntNum() <= INT_MAX) {
         std::cout << "char: Non displayable" << std::endl;
     } else {
         std::cout << "char: impossible" << std::endl;
@@ -36,9 +24,9 @@ void ConversionUtils::printValues() {
 
     std::cout << "int: " << ConversionUtils::getIntNum() << std::endl;
 
-    float floatNum = ConversionUtils::getFloatNum();
+    float floatNumValue = ConversionUtils::getFloatNum();
     // 条件に応じて出力形式を切り替える
-    if (std::abs(floatNum) >= 1e+6 || (floatNum != 0.0 && std::abs(floatNum) < 1e-6)) {
+    if (std::abs(floatNumValue) >= 1e+6 || (floatNumValue != 0.0 && std::abs(floatNumValue) < 1e-6)) {
         // 小数点以下5桁に設定
         std::cout << std::fixed << std::setprecision(5);
         // 指数表記で出力する設定
@@ -47,11 +35,11 @@ void ConversionUtils::printValues() {
         // 小数点以下1桁に設定
         std::cout << std::fixed << std::setprecision(1);
     }
-    std::cout << "float: " << floatNum << "f" << std::endl;
+    std::cout << "float: " << floatNumValue << "f" << std::endl;
 
-    double doubleNum = ConversionUtils::getDoubleNum();
+    double doubleNumValue = ConversionUtils::getDoubleNum();
     // doubleも同様に出力形式を切り替える
-    if (std::abs(doubleNum) >= 1e+6 || (doubleNum != 0.0 && std::abs(doubleNum) < 1e-6)) {
+    if (std::abs(doubleNumValue) >= 1e+6 || (doubleNumValue != 0.0 && std::abs(doubleNumValue) < 1e-6)) {
         // 小数点以下5桁に設定
         std::cout << std::fixed << std::setprecision(5);
         // 指数表記で出力する設定
@@ -97,19 +85,19 @@ int ConversionUtils::identifySpecialFloatValue(const char *str) {
 // メインの判定関数
 std::string ConversionUtils::determineType(const std::string &input) {
     if (ConversionUtils::isEmpty(input)) {
-        return "string";
+        return TYPE_STRING;
     }
 
     if (ConversionUtils::isSingleChar(input)) {
-        return "char";
+        return TYPE_CHAR;
     }
 
     long intValue;
     if (ConversionUtils::isInteger(input, intValue)) {
         if (intValue >= std::numeric_limits<int>::min() && intValue <= std::numeric_limits<int>::max()) {
-            return "int";
+            return TYPE_INT;
         } else {
-            return "overflow";
+            return TYPE_OVERFLOW;
         }
     }
 
@@ -118,26 +106,26 @@ std::string ConversionUtils::determineType(const std::string &input) {
         // 浮動小数点型の場合
         double value = std::strtod(input.c_str(), NULL);
         // オーバーフロー/アンダーフローチェックをdoubleの範囲で行う
-        if (value > INT_MAX) {
-            return "overflow";
-        } else if (value < INT_MIN) {
-            return "overflow";
+        if (value > std::numeric_limits<int>::max()) {
+            return TYPE_OVERFLOW;
+        } else if (value < std::numeric_limits<int>::min()) {
+            return TYPE_OVERFLOW;
         } else {
-            return endsWithF ? "float" : "double";
+            return endsWithF ? TYPE_FLOAT : TYPE_DOUBLE;
         }
     }
 
-    return "string";
+    return TYPE_STRING;
 }
 
 void ConversionUtils::toChar(const std::string input, const std::string &type) {
-    if (type == "char") {
+    if (type == TYPE_CHAR) {
         // 文字型の場合
         if (input.length() == 1) {
             ConversionUtils::setC(input[0]);
             return;
         }
-    } else if (type == "int") {
+    } else if (type == TYPE_INT) {
         // 整数型の場合
         long value = std::strtol(input.c_str(), NULL, 10);
         // ASCII範囲内の値か確認
@@ -145,7 +133,7 @@ void ConversionUtils::toChar(const std::string input, const std::string &type) {
             ConversionUtils::setC(static_cast<char>(value));
             return;
         }
-    } else if (type == "float" || type == "double") {
+    } else if (type == TYPE_FLOAT || type == TYPE_DOUBLE) {
         // 浮動小数点型の場合
         double value = std::strtod(input.c_str(), NULL);
         // ASCII範囲内の値か確認
@@ -161,30 +149,24 @@ void ConversionUtils::toChar(const std::string input, const std::string &type) {
 }
 
 void ConversionUtils::toInt(const std::string input, const std::string &type) {
-    if (type == "char") {
+    if (type == TYPE_CHAR) {
         // 文字型の場合
         if (input.length() == 1) {
             ConversionUtils::setIntNum(static_cast<int>(input[0]));
             return;
         }
-    } else if (type == "int") {
+    } else if (type == TYPE_INT) {
         // 整数型の場合
         long value = std::strtol(input.c_str(), NULL, 10);
         if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max()) {
             ConversionUtils::setIntNum(static_cast<int>(value));
             return;
         }
-    } else if (type == "float" || type == "double") {
+    } else if (type == TYPE_FLOAT || type == TYPE_DOUBLE) {
         // 浮動小数点型の場合
         double value = std::strtod(input.c_str(), NULL);
-        // オーバーフロー/アンダーフローチェックをdoubleの範囲で行う
-        if (value > std::numeric_limits<int>::max()) {
-            ConversionUtils::setIntNum(std::numeric_limits<int>::max());
-            return;
-        } else if (value < std::numeric_limits<int>::min()) {
-            ConversionUtils::setIntNum(std::numeric_limits<int>::min());
-            return;
-        } else {
+        if (value >= std::numeric_limits<int>::min()
+            && value <= std::numeric_limits<int>::max()) {
             ConversionUtils::setIntNum(static_cast<int>(value));
             return;
         }
@@ -196,24 +178,25 @@ void ConversionUtils::toInt(const std::string input, const std::string &type) {
 
 void ConversionUtils::toFloat(const std::string input,
                                const std::string &type) {
-    if (type == "char") {
+    if (type == TYPE_CHAR) {
         // 文字型の場合
         if (input.length() == 1) {
             ConversionUtils::setFloatNum(static_cast<float>(input[0]));
             return;
         }
-    } else if (type == "int") {
+    } else if (type == TYPE_INT) {
         // 整数型の場合
         long value = std::strtol(input.c_str(), NULL, 10);
         if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max()) {
             ConversionUtils::setFloatNum(static_cast<float>(value));
             return;
         }
-    } else if (type == "float" || type == "double") {
+    } else if (type == TYPE_FLOAT || type == TYPE_DOUBLE) {
         // 浮動小数点型の場合
         char *endPtr;
         double value = std::strtod(input.c_str(), &endPtr);
-        if (*endPtr == 'f' || *endPtr == '\0') { // 'f' (float) または終端文字
+        // 'f' (float) または終端文字
+        if (*endPtr == 'f' || *endPtr == '\0') {
             ConversionUtils::setDoubleNum(value);
             return;
         }
@@ -225,24 +208,25 @@ void ConversionUtils::toFloat(const std::string input,
 
 void ConversionUtils::toDouble(const std::string input,
                                 const std::string &type) {
-    if (type == "char") {
+    if (type == TYPE_CHAR) {
         // 文字型の場合
         if (input.length() == 1) {
             ConversionUtils::setDoubleNum(static_cast<double>(input[0]));
             return;
         }
-    } else if (type == "int") {
+    } else if (type == TYPE_INT) {
         // 整数型の場合
         long value = std::strtol(input.c_str(), NULL, 10);
         if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max()) {
             ConversionUtils::setDoubleNum(static_cast<double>(value));
             return;
         }
-    } else if (type == "float" || type == "double") {
+    } else if (type == TYPE_FLOAT || type == TYPE_DOUBLE) {
         // 浮動小数点型の場合
         char *endPtr;
         double value = std::strtod(input.c_str(), &endPtr);
-        if (*endPtr == 'f' || *endPtr == '\0') { // 'f' (float) または終端文字
+        // 'f' (float) または終端文字
+        if (*endPtr == 'f' || *endPtr == '\0') {
             ConversionUtils::setFloatNum(static_cast<float>(value));
             return;
         }
@@ -334,14 +318,6 @@ bool ConversionUtils::isFloatingPoint(const std::string &input,
     return *endPtr == '\0';
 }
 
-// 特殊値 (inf, nan) のチェック
-bool ConversionUtils::isSpecialFloatingPoint(const std::string &input) {
-    return input == "inf" || input == "+inf" || input == "-inf" ||
-           input == "infinity" || input == "+infinity" ||
-           input == "-infinity" || input == "nan" || input == "+nan" ||
-           input == "-nan";
-}
-
 char ConversionUtils::getC() {
     return c;
 }
@@ -373,6 +349,11 @@ float ConversionUtils::getFloatNum() {
 void ConversionUtils::setFloatNum(float num) {
     floatNum = num;
 }
+
+char ConversionUtils::c = '\0';
+int ConversionUtils::intNum = 0;
+double ConversionUtils::doubleNum = 0.0;
+float ConversionUtils::floatNum = 0.0f;
 
 const char* ConversionUtils::specialFloatValues[12][4] = {
     {"impossible", "impossible", "inff", "inf"},

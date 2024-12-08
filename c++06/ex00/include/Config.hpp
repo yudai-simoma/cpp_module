@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Config.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 16:12:50 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/08 18:28:27 by yshimoma         ###   ########.fr       */
+/*   Created: 2024/12/08 18:11:30 by yshimoma          #+#    #+#             */
+/*   Updated: 2024/12/08 18:11:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __BUREAUCRAT_HPP__
-#define __BUREAUCRAT_HPP__
+#ifndef __CONFIG_HPP__
+#define __CONFIG_HPP__
 
-#include <cstdlib>
-
-class ScalarConverter {
-   public:
-      static int convert(const char *str);
-
-   protected:
-   private:
-    ScalarConverter();
-    ScalarConverter(const ScalarConverter& other);
-    ScalarConverter& operator=(const ScalarConverter& other);
-    ~ScalarConverter();
-
-};
+#define RED_START "\033[1;31m"
+#define COLOR_END "\033[0m"
+#define TYPE_STRING "string"
+#define TYPE_CHAR "char"
+#define TYPE_INT "int"
+#define TYPE_FLOAT "float"
+#define TYPE_DOUBLE "double"
+#define TYPE_OVERFLOW "overflow"
 
 #endif
