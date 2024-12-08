@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include "ConversionUtils.hpp"
+
 #include "Config.hpp"
+#include "ConversionUtils.hpp"
 
 int ScalarConverter::convert(const char *str) {
     std::string input(str);

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
+
 #include "ConversionUtils.hpp"
 #include "ScalarConverter.hpp"
 
@@ -20,13 +21,17 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    //inf, nanの対応
+    // inf, nanの対応
     int n = ConversionUtils::identifySpecialFloatValue(argv[1]);
     if (n != -1) {
-        std::cout << "char: " << ConversionUtils::specialFloatValues[n][0] << std::endl;
-        std::cout << "int: " << ConversionUtils::specialFloatValues[n][1] << std::endl;
-        std::cout << "float: " << ConversionUtils::specialFloatValues[n][2] << std::endl;
-        std::cout << "double: " << ConversionUtils::specialFloatValues[n][3] << std::endl;
+        std::cout << "char: " << ConversionUtils::specialFloatValues[n][0]
+                  << std::endl;
+        std::cout << "int: " << ConversionUtils::specialFloatValues[n][1]
+                  << std::endl;
+        std::cout << "float: " << ConversionUtils::specialFloatValues[n][2]
+                  << std::endl;
+        std::cout << "double: " << ConversionUtils::specialFloatValues[n][3]
+                  << std::endl;
         return EXIT_FAILURE;
     }
     // 4つ(char, int, float, double)の型変換

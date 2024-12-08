@@ -13,15 +13,15 @@
 #ifndef __CONVERSION_UTILS_HPP__
 #define __CONVERSION_UTILS_HPP__
 
-#include <iostream>
-#include <string>
+#include <cctype>
+#include <cfloat>
+#include <cmath>
+#include <cstdlib>
 #include <iomanip>
+#include <iostream>
 #include <limits>
 #include <sstream>
-#include <cctype>
-#include <cstdlib>
-#include <cmath>
-#include <cfloat>
+#include <string>
 
 class ConversionUtils {
    public:
@@ -51,13 +51,13 @@ class ConversionUtils {
     static float getFloatNum();
     static void setFloatNum(float num);
 
-    static const char* specialFloatValues[12][4];
+    static const char *specialFloatValues[12][4];
 
    protected:
    private:
     ConversionUtils();
-    ConversionUtils(const ConversionUtils& other);
-    ConversionUtils& operator=(const ConversionUtils& other);
+    ConversionUtils(const ConversionUtils &other);
+    ConversionUtils &operator=(const ConversionUtils &other);
     ~ConversionUtils();
 };
 

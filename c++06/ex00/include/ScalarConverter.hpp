@@ -17,7 +17,7 @@
 
 class ScalarConverter {
    public:
-      static int convert(const char *str);
+    static int convert(const char* str);
 
    protected:
    private:
@@ -25,7 +25,6 @@ class ScalarConverter {
     ScalarConverter(const ScalarConverter& other);
     ScalarConverter& operator=(const ScalarConverter& other);
     ~ScalarConverter();
-
 };
 
 #endif
