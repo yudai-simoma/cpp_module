@@ -6,13 +6,12 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:58:08 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/11/20 10:03:55 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:59:59 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <sstream>
-#include <iomanip>
 
 #include "ConversionUtils.hpp"
 #include "ScalarConverter.hpp"
@@ -37,18 +36,16 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::cout << std::fixed << std::setprecision(1); // 小数点以下1桁に設定
-
-    std::cout << "char: " << ConversionUtils::getC() << std::endl;
-    std::cout << "int: " << ConversionUtils::getIntNum() << std::endl;
-    std::cout << "double: " << ConversionUtils::getDoubleNum() << std::endl;
-    std::cout << "float: " << ConversionUtils::getFloatNum() << std::endl;
-
-    ScalarConverter::convert(argv[1]);
-
-    std::cout << "char: " << ConversionUtils::getC() << std::endl;
-    std::cout << "int: " << ConversionUtils::getIntNum() << std::endl;
-    std::cout << "double: " << ConversionUtils::getDoubleNum() << std::endl;
-    std::cout << "float: " << ConversionUtils::getFloatNum() << std::endl;
+    int n = ConversionUtils::identifySpecialFloatValue(argv[1]);
+    if (n != -1) {
+        std::cout << "char: " << ConversionUtils::specialFloatValues[n][0] << std::endl;
+        std::cout << "int: " << ConversionUtils::specialFloatValues[n][1] << std::endl;
+        std::cout << "float: " << ConversionUtils::specialFloatValues[n][2] << std::endl;
+        std::cout << "double: " << ConversionUtils::specialFloatValues[n][3] << std::endl;
+        return 1;
+    }
+    if (ScalarConverter::convert(argv[1]) == 0) {
+        ConversionUtils::printValues();
+    }
     return 0;
 }
