@@ -6,12 +6,14 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 19:26:01 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/08 20:44:01 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:52:01 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __SERIALIZER_HPP__
 #define __SERIALIZER_HPP__
+
+#include <stdint.h>
 
 #include <cstdlib>
 #include <iostream>
