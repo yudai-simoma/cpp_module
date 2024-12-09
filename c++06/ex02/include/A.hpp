@@ -13,13 +13,13 @@
 #ifndef __A_HPP__
 #define __A_HPP__
 
-#include "Base.hpp"
-
+#include <cstdlib>
 #include <iostream>
 #include <string>
-#include <cstdlib>
 
-class A: public Base {
+#include "Base.hpp"
+
+class A : public Base {
    public:
    protected:
    private:

@@ -26,7 +26,7 @@ class Base {
 
 void initialize();
 
-Base * generate(void);
+Base* generate(void);
 
 void identify(Base* p);
 

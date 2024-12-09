@@ -13,12 +13,12 @@
 #ifndef __SERIALIZER_HPP__
 #define __SERIALIZER_HPP__
 
+#include <cstdlib>
 #include <iostream>
 #include <string>
-#include <cstdlib>
 
 struct Data {
-  int value;
+    int value;
 };
 
 class Serializer {
