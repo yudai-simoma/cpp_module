@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:43:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/09 22:54:47 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/13 00:17:34 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <ctime>
 #include <iostream>
 #include <string>
-#include <typeinfo>
+#include <cstdlib>
 
 class Base {
    public:

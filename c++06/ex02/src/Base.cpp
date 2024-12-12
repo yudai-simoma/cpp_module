@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 21:07:32 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/08 21:26:50 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/13 00:14:33 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,21 @@ void identify(Base& p) {
         (void)dynamic_cast<A&>(p);
         std::cout << "p is an A object" << std::endl;
         return;
-    } catch (std::bad_cast&) {
+    } catch (std::exception&) {
     }
 
     try {
         (void)dynamic_cast<B&>(p);
         std::cout << "p is an B object" << std::endl;
         return;
-    } catch (std::bad_cast&) {
+    } catch (std::exception&) {
     }
 
     try {
         (void)dynamic_cast<C&>(p);
         std::cout << "p is an C object" << std::endl;
         return;
-    } catch (std::bad_cast&) {
+    } catch (std::exception&) {
     }
 
     std::cout << "Unknown Type" << std::endl;
