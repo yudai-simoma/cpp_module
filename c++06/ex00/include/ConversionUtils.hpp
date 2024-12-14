@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:18:08 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/08 18:23:30 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/14 11:33:05 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <limits>
 #include <sstream>
 #include <string>
+#include <float.h> 
 
 class ConversionUtils {
    public:

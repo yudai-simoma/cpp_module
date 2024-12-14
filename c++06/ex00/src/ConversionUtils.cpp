@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/08 18:51:25 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/14 13:04:57 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void ConversionUtils::printValues() {
 
     float floatNumValue = ConversionUtils::getFloatNum();
     // 条件に応じて出力形式を切り替える
+    // loatNumValue が非常に大きい値（100万以上）であるか、
+    // 非常に小さい値（0に近い値、0.000001未満）である」場合にTRUE
     if (std::abs(floatNumValue) >= 1e+6 ||
         (floatNumValue != 0.0 && std::abs(floatNumValue) < 1e-6)) {
         // 小数点以下5桁に設定
@@ -98,26 +100,14 @@ std::string ConversionUtils::determineType(const std::string &input) {
 
     long intValue;
     if (ConversionUtils::isInteger(input, intValue)) {
-        if (intValue >= std::numeric_limits<int>::min() &&
-            intValue <= std::numeric_limits<int>::max()) {
-            return TYPE_INT;
-        } else {
-            return TYPE_OVERFLOW;
-        }
+        return TYPE_INT;
     }
 
     bool endsWithF;
+    // 正しい小数点数字かどうかをチェック
+    // かつ、最後にfの文字があれば、endsWithFがTRUEになる
     if (ConversionUtils::isFloatingPoint(input, endsWithF)) {
-        // 浮動小数点型の場合
-        double value = std::strtod(input.c_str(), NULL);
-        // オーバーフロー/アンダーフローチェックをdoubleの範囲で行う
-        if (value > std::numeric_limits<int>::max()) {
-            return TYPE_OVERFLOW;
-        } else if (value < std::numeric_limits<int>::min()) {
-            return TYPE_OVERFLOW;
-        } else {
-            return endsWithF ? TYPE_FLOAT : TYPE_DOUBLE;
-        }
+        return endsWithF ? TYPE_FLOAT : TYPE_DOUBLE;
     }
 
     return TYPE_STRING;
@@ -158,24 +148,38 @@ void ConversionUtils::toInt(const std::string input, const std::string &type) {
         // 文字型の場合
         if (input.length() == 1) {
             ConversionUtils::setIntNum(static_cast<int>(input[0]));
-            return;
         }
+        return;
     } else if (type == TYPE_INT) {
         // 整数型の場合
         long value = std::strtol(input.c_str(), NULL, 10);
-        if (value >= std::numeric_limits<int>::min() &&
-            value <= std::numeric_limits<int>::max()) {
+       if (value > static_cast<long>(std::numeric_limits<int>::max())) {
+            std::cout << RED_START << "Error: intのオーバーフローを検出しました。INT_MAXを設定します。"
+            << COLOR_END << std::endl;
+            ConversionUtils::setIntNum(std::numeric_limits<int>::max());
+        } else if (value < static_cast<long>(std::numeric_limits<int>::min())) {
+            std::cout << RED_START << "Error: intのアンダーフローを検出しました。INT_MINを設定します。"
+            << COLOR_END << std::endl;
+           ConversionUtils::setIntNum(std::numeric_limits<int>::min());
+        } else {
             ConversionUtils::setIntNum(static_cast<int>(value));
-            return;
         }
+        return;
     } else if (type == TYPE_FLOAT || type == TYPE_DOUBLE) {
         // 浮動小数点型の場合
         double value = std::strtod(input.c_str(), NULL);
-        if (value >= std::numeric_limits<int>::min() &&
-            value <= std::numeric_limits<int>::max()) {
+        if (value > static_cast<double>(std::numeric_limits<int>::max())) {
+            std::cout << RED_START << "Error: intのオーバーフローを検出しました。INT_MAXを設定します。"
+            << COLOR_END << std::endl;
+             ConversionUtils::setIntNum(std::numeric_limits<int>::max());
+        } else if (value < static_cast<double>(std::numeric_limits<int>::min())) {
+            std::cout << RED_START << "Error: intのアンダーフローを検出しました。INT_MINを設定します。"
+            << COLOR_END << std::endl;
+            ConversionUtils::setIntNum(std::numeric_limits<int>::min());
+        } else {
             ConversionUtils::setIntNum(static_cast<int>(value));
-            return;
         }
+        return;
     }
 
     // 変換できない場合
@@ -193,18 +197,35 @@ void ConversionUtils::toFloat(const std::string input,
     } else if (type == TYPE_INT) {
         // 整数型の場合
         long value = std::strtol(input.c_str(), NULL, 10);
-        if (value >= std::numeric_limits<int>::min() &&
-            value <= std::numeric_limits<int>::max()) {
+        if (static_cast<double>(value) > static_cast<double>(FLT_MAX)) {
+            std::cout << RED_START << "Error: floatのオーバーフローを検出しました。FLT_MAXを設定します。"
+            << COLOR_END << std::endl;
+            ConversionUtils::setFloatNum(FLT_MAX);
+        } else if (static_cast<double>(value) < static_cast<double>(-FLT_MAX)) {
+            std::cout << RED_START << "Error: floatのアンダーフローを検出しました。-FLT_MAXを設定します。"
+            << COLOR_END << std::endl;
+            ConversionUtils::setFloatNum(-FLT_MAX);
+        } else {
             ConversionUtils::setFloatNum(static_cast<float>(value));
-            return;
         }
+        return;
     } else if (type == TYPE_FLOAT || type == TYPE_DOUBLE) {
         // 浮動小数点型の場合
         char *endPtr;
         double value = std::strtod(input.c_str(), &endPtr);
         // 'f' (float) または終端文字
         if (*endPtr == 'f' || *endPtr == '\0') {
-            ConversionUtils::setDoubleNum(value);
+            if (value > static_cast<double>(FLT_MAX)) {
+                std::cout << RED_START << "Error: floatのオーバーフローを検出しました。FLT_MAXを設定します。"
+                << COLOR_END << std::endl;
+                ConversionUtils::setFloatNum(FLT_MAX);
+            } else if (value < static_cast<double>(-FLT_MAX)) {
+                std::cout << RED_START << "Error: floatのアンダーフローを検出しました。-FLT_MAXを設定します。"
+                << COLOR_END << std::endl;
+                ConversionUtils::setFloatNum(-FLT_MAX);
+            } else {
+                ConversionUtils::setFloatNum(value);
+            }
             return;
         }
     }
@@ -219,23 +240,40 @@ void ConversionUtils::toDouble(const std::string input,
         // 文字型の場合
         if (input.length() == 1) {
             ConversionUtils::setDoubleNum(static_cast<double>(input[0]));
-            return;
         }
+        return;
     } else if (type == TYPE_INT) {
         // 整数型の場合
         long value = std::strtol(input.c_str(), NULL, 10);
-        if (value >= std::numeric_limits<int>::min() &&
-            value <= std::numeric_limits<int>::max()) {
-            ConversionUtils::setDoubleNum(static_cast<double>(value));
-            return;
+        if (static_cast<double>(value) > DBL_MAX) {
+            std::cout << RED_START << "Error: doubleのオーバーフローを検出しました。DBL_MAXを設定します。"
+            << COLOR_END << std::endl;
+            ConversionUtils::setDoubleNum(DBL_MAX);
+        } else if (static_cast<double>(value) < -DBL_MAX) {
+            std::cout << RED_START << "Error: doubleのアンダーフローを検出しました。-DBL_MAXを設定します。"
+            << COLOR_END << std::endl;
+            ConversionUtils::setDoubleNum(-DBL_MAX);
+        } else {
+           ConversionUtils::setDoubleNum(static_cast<double>(value));
         }
+        return;
     } else if (type == TYPE_FLOAT || type == TYPE_DOUBLE) {
         // 浮動小数点型の場合
         char *endPtr;
         double value = std::strtod(input.c_str(), &endPtr);
         // 'f' (float) または終端文字
         if (*endPtr == 'f' || *endPtr == '\0') {
-            ConversionUtils::setFloatNum(static_cast<float>(value));
+            if (value > DBL_MAX) {
+                std::cout << RED_START << "Error: doubleのオーバーフローを検出しました。DBL_MAXを設定します。"
+                << COLOR_END << std::endl;
+                ConversionUtils::setDoubleNum(DBL_MAX);
+            } else if (value < -DBL_MAX) {
+                std::cout << RED_START << "Error: doubleのアンダーフローを検出しました。-DBL_MAXを設定します。"
+                << COLOR_END << std::endl;
+                ConversionUtils::setDoubleNum(-DBL_MAX);
+            } else {
+                ConversionUtils::setDoubleNum(value);
+            }
             return;
         }
     }

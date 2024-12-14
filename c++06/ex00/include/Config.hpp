@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 18:11:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/08 18:11:30 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/14 13:32:31 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@
 #define TYPE_INT "int"
 #define TYPE_FLOAT "float"
 #define TYPE_DOUBLE "double"
-#define TYPE_OVERFLOW "overflow"
 
 #endif

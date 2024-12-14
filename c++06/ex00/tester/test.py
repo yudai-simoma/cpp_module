@@ -1,6 +1,9 @@
 import subprocess
 from typing import List
 
+RED_START = "\033[1;31m"
+COLOR_END = "\033[0m"
+
 # 実行コマンド
 # python3 -m pytest test.py
 
@@ -92,26 +95,44 @@ def test_nnanf():
 	diff("-nanf",expected_list)
 
 def test_Over_INT_MAXf_dot():
-	result = subprocess.run(['../convert', "2147483647.5f"], capture_output=True, text=True)
-	assert result.stdout.strip() == "Error: 入力値が整数型(int)の範囲を超えています。"
-# 	expected_list = ["char: impossible", "int: 2147483647", "float: 2.14748e+09f", "double: 2.14748e+09"]
-# 	diff("2.14748e+09f",expected_list)
+	expected_list = ["char: impossible", "int: 2147480000", "float: 2.14748e+09f", "double: 2.14748e+09"]
+	diff("2.14748e+09f",expected_list)
 
 def test_INT_MINf():
 	expected_list = ["char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
 	diff("-2147483648f",expected_list)
 
 def test_Under_INT_MINf():
-	result = subprocess.run(['../convert', "-2147483649f"], capture_output=True, text=True)
-	assert result.stdout.strip() == "Error: 入力値が整数型(int)の範囲を超えています。"
-	# expected_list = ["char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
-	# diff("-2147483649f",expected_list)
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
+	diff("-2147483649f",expected_list)
 
 def test_Under_INT_MINf2():
-	result = subprocess.run(['../convert', "-2147483648.5f"], capture_output=True, text=True)
-	assert result.stdout.strip() == "Error: 入力値が整数型(int)の範囲を超えています。"
-	# expected_list = ["char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
-	# diff("-2147483648.5f",expected_list)
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
+	diff("-2147483648.5f",expected_list)
+
+def test_FLT_MAXf():
+	expected_list = [RED_START + "Error: intのオーバーフローを検出しました。INT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: 2147483647", "float: 3.40282e+38f", "double: 3.40282e+38"]
+	diff("3.40282e+38f",expected_list)
+
+def test_Over_FLT_MAXf():
+	expected_list = [RED_START + "Error: intのオーバーフローを検出しました。INT_MAXを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのオーバーフローを検出しました。FLT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: 2147483647", "float: 3.40282e+38f", "double: 3.50282e+38"]
+	diff("3.50282e+38f",expected_list)
+
+def test_FLT_MINf():
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -3.40282e+38f", "double: -3.40282e+38"]
+	diff("-3.40282e+38f",expected_list)
+
+def test_Under_FLT_MINf():
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのアンダーフローを検出しました。-FLT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -3.40282e+38f", "double: -3.50282e+38"]
+	diff("-3.50282e+38f",expected_list)
 
 #test double
 def test_0d():
@@ -159,32 +180,66 @@ def test_INT_MAXd():
 	diff("2147483647",expected_list)
 
 def test_Over_INT_MAXd():
-	result = subprocess.run(['../convert', "2147483648"], capture_output=True, text=True)
-	assert result.stdout.strip() == "Error: 入力値が整数型(int)の範囲を超えています。"
-	# expected_list = ["char: impossible", "int: -2147483648", "float: 2.14748e+09f", "double: 2.14748e+09"]
-	# diff("2147483648",expected_list)
+	expected_list = [RED_START + "Error: intのオーバーフローを検出しました。INT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: 2147483647", "float: 2.14748e+09f", "double: 2.14748e+09"]
+	diff("2147483648",expected_list)
 
 def test_Over_INT_MAXd_dot():
-	result = subprocess.run(['../convert', "2147483647.5"], capture_output=True, text=True)
-	assert result.stdout.strip() == "Error: 入力値が整数型(int)の範囲を超えています。"
-	# expected_list = ["char: impossible", "int: 2147483647", "float: 2.14748e+09f", "double: 2.14748e+09"]
-	# diff("2147483647.5",expected_list)
+	expected_list = [RED_START + "Error: intのオーバーフローを検出しました。INT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: 2147483647", "float: 2.14748e+09f", "double: 2.14748e+09"]
+	diff("2147483647.5",expected_list)
 
 def test_INT_MINd():
 	expected_list = ["char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
 	diff("-2147483648",expected_list)
 
 def test_Under_INT_MINd():
-	result = subprocess.run(['../convert', "-2147483649"], capture_output=True, text=True)
-	assert result.stdout.strip() == "Error: 入力値が整数型(int)の範囲を超えています。"
-	# expected_list = ["char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
-	# diff("-2147483649",expected_list)
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
+	diff("-2147483649",expected_list)
 
 def test_Under_INT_MINd2():
-	result = subprocess.run(['../convert', "-2147483648.5"], capture_output=True, text=True)
-	assert result.stdout.strip() == "Error: 入力値が整数型(int)の範囲を超えています。"
-	# expected_list = ["char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
-	# diff("-2147483648.5",expected_list)
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -2.14748e+09f", "double: -2.14748e+09"]
+	diff("-2147483648.5",expected_list)
+
+def test_DBL_MAX_1():
+	expected_list = [RED_START + "Error: intのオーバーフローを検出しました。INT_MAXを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのオーバーフローを検出しました。FLT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: 2147483647", "float: 3.40282e+38f", "double: 1.69769e+308"]
+	diff("1.69769e+308",expected_list)
+
+def test_DBL_MAX():
+	expected_list = [RED_START + "Error: intのオーバーフローを検出しました。INT_MAXを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのオーバーフローを検出しました。FLT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: 2147483647", "float: 3.40282e+38f", "double: 1.79769e+308"]
+	diff("1.79769e+308",expected_list)
+
+def test_Over_DBL_MAX():
+	expected_list = [RED_START + "Error: intのオーバーフローを検出しました。INT_MAXを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのオーバーフローを検出しました。FLT_MAXを設定します。" + COLOR_END
+				  , RED_START + "Error: doubleのオーバーフローを検出しました。DBL_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: 2147483647", "float: 3.40282e+38f", "double: 1.79769e+308"]
+	diff("1.89769e+308",expected_list)
+
+def test_DBL_MIN_1():
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのアンダーフローを検出しました。-FLT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -3.40282e+38f", "double: -1.69769e+308"]
+	diff("-1.6976931348623157e+308",expected_list)
+
+def test_DBL_MIN():
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのアンダーフローを検出しました。-FLT_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -3.40282e+38f", "double: -1.79769e+308"]
+	diff("-1.7976931348623157e+308",expected_list)
+
+def test_Under_DBL_MIN():
+	expected_list = [RED_START + "Error: intのアンダーフローを検出しました。INT_MINを設定します。" + COLOR_END
+				  , RED_START + "Error: floatのアンダーフローを検出しました。-FLT_MAXを設定します。" + COLOR_END
+				  , RED_START + "Error: doubleのアンダーフローを検出しました。-DBL_MAXを設定します。" + COLOR_END
+				  , "char: impossible", "int: -2147483648", "float: -3.40282e+38f", "double: -1.79769e+308"]
+	diff("-1.8976931348623157e+308",expected_list)
 
 def test_error():
 	result = subprocess.run(['../convert', "aaaaaa"], capture_output=True, text=True)
