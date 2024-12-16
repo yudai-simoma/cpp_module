@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 20:56:38 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/16 00:19:22 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/16 21:27:13 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int main() {
     std::cout << "\n--- [] 演算子の例外テスト ---" << std::endl;
     try {
         strArray[5] = "エラー";  // 範囲外アクセス
-    } catch (const std::runtime_error& e) {
+    } catch (const std::exception& e) {
         std::cerr << "例外が発生しました: " << e.what() << std::endl;
     }
     return 0;

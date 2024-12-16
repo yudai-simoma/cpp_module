@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 23:45:26 by yshimoma          #+#    #+#             */
-/*   Updated: 2024/12/16 00:15:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2024/12/16 21:27:05 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ class Array {
     // 要素アクセス演算子: []
     T& operator[](size_t index) {
         if (index >= this->_size) {
-            throw std::runtime_error("引数のインデックスが範囲外です");
+            throw std::exception();
         }
         return this->_data[index];
     }
